@@ -1,8 +1,9 @@
+import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import styles from "./CardList.module.css";
 import Card from "../Card/Card";
 
-function CardList() {
+function CardList({ panierCount, setPanierCount }) {
   const [apiData, setApiData] = useState([]);
 
   useEffect(() => {
@@ -23,6 +24,8 @@ function CardList() {
             largeImage={p.images.large}
             price={p.averageSellPrice}
             types={p.types}
+            panierCount={panierCount}
+            setPanierCount={setPanierCount}
           />
         ))}
     </div>
@@ -30,3 +33,8 @@ function CardList() {
 }
 
 export default CardList;
+
+CardList.propTypes = {
+  panierCount: PropTypes.number.isRequired,
+  setPanierCount: PropTypes.func.isRequired,
+};
