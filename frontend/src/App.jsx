@@ -1,10 +1,14 @@
 import "./App.css";
-import Card from "./components/card/Card";
+import Navbar from "./components/navbar/Navbar";
+import CardList from "./components/CardList/CardList";
+import Footer from "./components/footer/Footer";
 
 function App() {
   return (
     <div className="App">
-      <Card />
+      <Navbar />
+      <CardList />
+      <Footer />
     </div>
   );
 }
