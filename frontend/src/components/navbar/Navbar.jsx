@@ -4,7 +4,7 @@ import styles from "./navbar.module.css";
 import Logo from "../../assets/logo.png";
 import Panier from "../../assets/panier.png";
 
-function Navbar({ panierCount }) {
+function Navbar({ basketCount }) {
   return (
     <nav className={styles.navbar}>
       <div className={styles.logo}>
@@ -13,7 +13,7 @@ function Navbar({ panierCount }) {
       <h1 className={styles.title}>Pokekwak</h1>
       <button type="button" className={styles.panier}>
         <img src={Panier} alt="panier" />
-        {panierCount}
+        {basketCount}
       </button>
     </nav>
   );
@@ -22,5 +22,5 @@ function Navbar({ panierCount }) {
 export default Navbar;
 
 Navbar.propTypes = {
-  panierCount: PropTypes.number.isRequired,
+  basketCount: PropTypes.number.isRequired,
 };

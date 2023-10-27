@@ -5,12 +5,12 @@ import CardList from "./components/CardList/CardList";
 import Footer from "./components/footer/Footer";
 
 function App() {
-  const [panierCount, setPanierCount] = useState(0);
+  const [basketCount, setBasketCount] = useState(0);
 
   return (
     <div className="App">
-      <Navbar panierCount={panierCount} />
-      <CardList panierCount={panierCount} setPanierCount={setPanierCount} />
+      <Navbar basketCount={basketCount} />
+      <CardList basketCount={basketCount} setBasketCount={setBasketCount} />
       <Footer />
     </div>
   );
