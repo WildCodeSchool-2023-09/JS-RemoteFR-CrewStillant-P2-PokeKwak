@@ -1,9 +1,11 @@
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import styles from "./CardList.module.css";
-import Card from "../Card/Card";
+import Card from "../singleCard/Card";
 
-function CardList({ panierCount, setPanierCount }) {
+
+
+function CardList({ basketCount, setBasketCount }) {
   const [apiData, setApiData] = useState([]);
 
   useEffect(() => {
@@ -17,15 +19,15 @@ function CardList({ panierCount, setPanierCount }) {
       {apiData.length &&
         apiData.map((p) => (
           <Card
-            id={p.id}
+            key={p.id}
             rarity={p.rarity}
             name={p.name}
             smallImage={p.images.small}
             largeImage={p.images.large}
-            price={p.averageSellPrice}
+            price={p.cardmarket.prices.averageSellPrice}
             types={p.types}
-            panierCount={panierCount}
-            setPanierCount={setPanierCount}
+            basketCount={basketCount}
+            setBasketCount={setBasketCount}
           />
         ))}
     </div>
@@ -35,6 +37,6 @@ function CardList({ panierCount, setPanierCount }) {
 export default CardList;
 
 CardList.propTypes = {
-  panierCount: PropTypes.number.isRequired,
-  setPanierCount: PropTypes.func.isRequired,
+  basketCount: PropTypes.number.isRequired,
+  setBasketCount: PropTypes.func.isRequired,
 };

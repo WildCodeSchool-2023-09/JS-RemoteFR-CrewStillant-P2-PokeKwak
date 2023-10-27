@@ -9,8 +9,8 @@ function Card({
   largeImage,
   name,
   price,
-  panierCount,
-  setPanierCount,
+  basketCount,
+  setBasketCount,
 }) {
   const [isHovering, setIsHovering] = useState(false);
   const handleMouseOver = () => {
@@ -21,14 +21,14 @@ function Card({
   };
 
   const [isVisible, setIsVisible] = useState("notVisible");
-  const [cardVisible, setCardVis] = useState("small-card");
+  const [cardVisible, setCardVis] = useState("true");
   const cardClick = () => {
     setIsVisible((isVis) => !isVis);
     setCardVis((cardVis) => !cardVis);
   };
 
   const shopClick = () => {
-    setPanierCount(panierCount + 1);
+    setBasketCount(basketCount + 1);
   };
   return (
     <div className={styles.card}>
@@ -37,7 +37,7 @@ function Card({
         className={cardVisible ? styles.smallCard : styles.hiddenCard}
         onClick={cardClick}
       >
-        <img src={smallImage} alt={name} />
+        <img src={smallImage} alt={name} className={styles.smallimg} />
       </button>
       <div className={isVisible ? styles.notVisible : styles.isVisible}>
         <img src={largeImage} alt={name} className={styles.largeImage} />
@@ -83,6 +83,6 @@ Card.propTypes = {
   largeImage: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
-  panierCount: PropTypes.number.isRequired,
-  setPanierCount: PropTypes.func.isRequired,
+  basketCount: PropTypes.number.isRequired,
+  setBasketCount: PropTypes.func.isRequired,
 };
