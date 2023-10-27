@@ -9,7 +9,7 @@ function CardList({ panierCount, setPanierCount }) {
   useEffect(() => {
     fetch("https://api.pokemontcg.io/v2/cards?pageSize=50")
       .then((res) => res.json())
-      .then((data) => setApiData(data));
+      .then((data) => setApiData(data.data));
   }, []);
 
   return (
