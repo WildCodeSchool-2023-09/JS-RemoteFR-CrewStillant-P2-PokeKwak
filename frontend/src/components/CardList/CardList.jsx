@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import styles from "./CardList.module.css";
-import Card from "../card/Card";
+import Card from "../Card/Card";
 
 function CardList({ panierCount, setPanierCount }) {
   const [apiData, setApiData] = useState([]);
