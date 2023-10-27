@@ -3,8 +3,6 @@ import { useEffect, useState } from "react";
 import styles from "./CardList.module.css";
 import Card from "../singleCard/Card";
 
-
-
 function CardList({ basketCount, setBasketCount }) {
   const [apiData, setApiData] = useState([]);
 

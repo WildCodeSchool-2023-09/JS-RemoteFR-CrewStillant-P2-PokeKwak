@@ -9,10 +9,10 @@ function App() {
   const [basketCount, setBasketCount] = useState(0);
   return (
     <div className="App">
-      <Navbar basketCount={basketCount} /> 
+      <Navbar basketCount={basketCount} />
       <div className="main">
         <Filtres />
-       <CardList basketCount={basketCount} setBasketCount={setBasketCount} /> 
+        <CardList basketCount={basketCount} setBasketCount={setBasketCount} />
       </div>
       <Footer />
     </div>
