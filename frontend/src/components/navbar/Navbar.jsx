@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import PropTypes from "prop-types";
 import React from "react";
 import styles from "./navbar.module.css";
@@ -11,6 +12,17 @@ function Navbar({ basketCount }) {
         <img src={Logo} alt="logo" />
       </div>
       <h1 className={styles.title}>Pokekwak</h1>
+      <ul>
+        <li>
+          <NavLink to="/">Accueil</NavLink>
+        </li>
+        <li>
+          <NavLink to="/search">Recherche</NavLink>
+        </li>
+        <li>
+          <NavLink to="/shop">Boutique</NavLink>
+        </li>
+      </ul>
       <button type="button" className={styles.panier}>
         <img src={Panier} alt="panier" />
         {basketCount}
