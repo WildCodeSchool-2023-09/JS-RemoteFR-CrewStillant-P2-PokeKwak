@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import styles from "./card.module.css";
 import pokeball from "../../assets/pokeball.png";
-import shop from "../../assets/panier.png";
+import shop from "../../assets/basket.png";
 
 function Card({
   smallImage,

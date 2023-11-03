@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import styles from "./CardList.module.css";
 import Card from "../singleCard/Card";
+import Filters from "../filters/Filters";
 
 function CardList({ basketCount, setBasketCount }) {
   const [apiData, setApiData] = useState([]);
@@ -13,21 +14,24 @@ function CardList({ basketCount, setBasketCount }) {
   }, []);
 
   return (
-    <div className={styles.CardList}>
-      {apiData.length &&
-        apiData.map((p) => (
-          <Card
-            key={p.id}
-            rarity={p.rarity}
-            name={p.name}
-            smallImage={p.images.small}
-            largeImage={p.images.large}
-            price={p.cardmarket.prices.averageSellPrice}
-            types={p.types}
-            basketCount={basketCount}
-            setBasketCount={setBasketCount}
-          />
-        ))}
+    <div className={styles.search}>
+      <Filters />
+      <div className={styles.CardList}>
+        {apiData.length &&
+          apiData.map((p) => (
+            <Card
+              key={p.id}
+              rarity={p.rarity}
+              name={p.name}
+              smallImage={p.images.small}
+              largeImage={p.images.large}
+              price={p.cardmarket.prices.averageSellPrice}
+              types={p.types}
+              basketCount={basketCount}
+              setBasketCount={setBasketCount}
+            />
+          ))}
+      </div>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import { useState } from "react";
-import styles from "./filtre.module.css";
+import styles from "./filters.module.css";
 
-function Filtres() {
+function Filters() {
   const [reduce, setReduce] = useState("Reduce");
   const [buttonName, setButtonName] = useState("<");
   const reduceClick = () => {
@@ -43,4 +43,4 @@ function Filtres() {
   );
 }
 
-export default Filtres;
+export default Filters;
