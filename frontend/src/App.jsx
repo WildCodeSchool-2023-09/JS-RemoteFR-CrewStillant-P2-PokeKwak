@@ -8,8 +8,8 @@ function App() {
   const [basketCount, setBasketCount] = useState(0);
   return (
     <div className="App">
-      <Navbar basketCount={basketCount} />
-      <Outlet setBasketCount={setBasketCount} />
+      <Navbar basketCount={basketCount} setBasketCount={setBasketCount} />
+      <Outlet />
       <Footer />
     </div>
   );

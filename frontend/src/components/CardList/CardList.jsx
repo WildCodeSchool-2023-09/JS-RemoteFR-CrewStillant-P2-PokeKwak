@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import styles from "./CardList.module.css";
 import Card from "../singleCard/Card";
-import Filtres from "../filtres/Filtres";
+import Filters from "../filters/Filters";
 
 function CardList({ basketCount, setBasketCount }) {
   const [apiData, setApiData] = useState([]);
@@ -15,7 +15,7 @@ function CardList({ basketCount, setBasketCount }) {
 
   return (
     <div className={styles.search}>
-      <Filtres />
+      <Filters />
       <div className={styles.CardList}>
         {apiData.length &&
           apiData.map((p) => (

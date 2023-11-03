@@ -24,13 +24,13 @@
   -webkit-text-stroke: 1px rgb(18, 50, 167);
 }
 
-.panier {
+.basket {
   background-color: #9986fa;
   margin-right: 5px;
   border: none;
 }
 
-.panier img {
+.basket img {
   width: 20px;
   height: 20px;
 }
@@ -51,7 +51,7 @@
     -webkit-text-stroke: 2px rgb(18, 50, 167);
   }
 
-  .panier img {
+  .basket img {
     width: 40px;
     height: 40px;
   }

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import React from "react";
 import styles from "./navbar.module.css";
 import Logo from "../../assets/logo.png";
-import Panier from "../../assets/panier.png";
+import Basket from "../../assets/basket.png";
 
 function Navbar({ basketCount }) {
   return (
@@ -23,8 +23,8 @@ function Navbar({ basketCount }) {
           <NavLink to="/shop">Boutique</NavLink>
         </li>
       </ul>
-      <button type="button" className={styles.panier}>
-        <img src={Panier} alt="panier" />
+      <button type="button" className={styles.basket}>
+        <img src={Basket} alt="basket" />
         {basketCount}
       </button>
     </nav>
