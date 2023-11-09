@@ -11,8 +11,8 @@ function App() {
       <BasketContextProvider>
         <Navbar />
         <Outlet />
-        <Footer />
       </BasketContextProvider>
+      <Footer />
     </div>
   );
 }
