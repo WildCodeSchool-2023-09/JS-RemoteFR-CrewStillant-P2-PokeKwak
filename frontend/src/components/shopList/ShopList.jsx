@@ -20,8 +20,8 @@ function ShopList() {
             <div className={styles.cartItems_info}>
               <div className={styles.buttonsItems}>
                 <button type="button"> + </button>
-                <span> &nbsp;&nbsp;{item.quantity}&nbsp;&nbsp;</span>
-                <button type="button"> - </button>&nbsp;&nbsp;
+                <span>{item.quantity}</span>
+                <button type="button"> - </button>
               </div>
               <div className={styles.priceItems}>
                 <span>{item.priceItem}€</span>
