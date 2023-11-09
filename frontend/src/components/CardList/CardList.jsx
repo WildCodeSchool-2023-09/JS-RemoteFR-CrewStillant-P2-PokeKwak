@@ -39,8 +39,6 @@ function CardList() {
                 smallImage={p.images.small}
                 largeImage={p.images.large}
                 price={p.cardmarket.prices.averageSellPrice}
-                basketCount={basketCount}
-                setBasketCount={setBasketCount}
               />
             ))}
         </div>
