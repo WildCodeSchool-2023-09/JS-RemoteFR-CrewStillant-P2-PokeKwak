@@ -3,15 +3,18 @@ import { useState } from "react";
 import styles from "./card.module.css";
 import pokeball from "../../assets/pokeball.png";
 import shop from "../../assets/basket.png";
+import { useBasket } from "../../context/BasketContext";
 
-function Card({
-  smallImage,
-  largeImage,
-  name,
-  price,
-  basketCount,
-  setBasketCount,
-}) {
+function Card({ smallImage, largeImage, name, price }) {
+  const {
+    basketCount,
+    setBasketCount,
+    prices,
+    setPrices,
+    cardItems,
+    setCardItems,
+  } = useBasket();
+
   const [isHovering, setIsHovering] = useState(false);
   const handleMouseOver = () => {
     setIsHovering(true);
@@ -28,7 +31,23 @@ function Card({
   };
 
   const shopClick = () => {
+    const itemIndex = cardItems.findIndex((item) => item.name === name);
+
+    if (itemIndex !== -1) {
+      cardItems[itemIndex].quantity += 1;
+    } else {
+      const newItem = {
+        nameItem: name,
+        priceItem: price,
+        image: smallImage,
+        quantity: 1,
+      };
+      cardItems.push(newItem);
+    }
+
     setBasketCount(basketCount + 1);
+    setPrices(prices + price);
+    setCardItems([...cardItems]);
   };
   return (
     <div className={styles.card}>
@@ -83,6 +102,4 @@ Card.propTypes = {
   largeImage: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
-  basketCount: PropTypes.number.isRequired,
-  setBasketCount: PropTypes.func.isRequired,
 };

@@ -1,10 +1,11 @@
-import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import styles from "./CardList.module.css";
 import Card from "../singleCard/Card";
 import Filters from "../filters/Filters";
+import { useBasket } from "../../context/BasketContext";
 
-function CardList({ basketCount, setBasketCount }) {
+function CardList() {
+  const { basketCount, prices, setBasketCount, setPrices } = useBasket();
   const [apiData, setApiData] = useState([]);
 
   useEffect(() => {
@@ -29,6 +30,8 @@ function CardList({ basketCount, setBasketCount }) {
               types={p.types}
               basketCount={basketCount}
               setBasketCount={setBasketCount}
+              prices={prices}
+              setPrices={setPrices}
             />
           ))}
       </div>
@@ -37,8 +40,3 @@ function CardList({ basketCount, setBasketCount }) {
 }
 
 export default CardList;
-
-CardList.propTypes = {
-  basketCount: PropTypes.number.isRequired,
-  setBasketCount: PropTypes.func.isRequired,
-};

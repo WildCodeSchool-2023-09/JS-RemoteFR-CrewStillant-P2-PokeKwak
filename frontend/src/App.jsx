@@ -1,16 +1,18 @@
 import { Outlet } from "react-router-dom";
 import "./App.css";
-import React, { useState } from "react";
+import React from "react";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
+import BasketContextProvider from "./context/BasketContext";
 
 function App() {
-  const [basketCount, setBasketCount] = useState(0);
   return (
     <div className="App">
-      <Navbar basketCount={basketCount} setBasketCount={setBasketCount} />
-      <Outlet />
-      <Footer />
+      <BasketContextProvider>
+        <Navbar />
+        <Outlet />
+        <Footer />
+      </BasketContextProvider>
     </div>
   );
 }
