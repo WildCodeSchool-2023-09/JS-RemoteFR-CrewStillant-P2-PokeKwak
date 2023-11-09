@@ -3,15 +3,7 @@ import { useState } from "react";
 import Modal from "../modal/Modal";
 import styles from "./card.module.css";
 
-function Card({
-  smallImage,
-  name,
-  id,
-  largeImage,
-  basketCount,
-  setBasketCount,
-  price,
-}) {
+function Card({ smallImage, name, id, largeImage, price }) {
   const [modal, setModal] = useState(false);
   const toggleModal = () => {
     setModal(!modal);
@@ -34,8 +26,6 @@ function Card({
           name={name}
           id={id}
           largeImage={largeImage}
-          basketCount={basketCount}
-          setBasketCount={setBasketCount}
           price={price}
         />
       )}
@@ -48,8 +38,6 @@ export default Card;
 Card.propTypes = {
   smallImage: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  basketCount: PropTypes.number.isRequired,
-  setBasketCount: PropTypes.func.isRequired,
   largeImage: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
