@@ -6,6 +6,7 @@ import HomePage from "./pages/homePage/HomePage";
 import SearchingCard from "./pages/SearchingCard";
 import Shop from "./pages/Shop";
 import CardPage from "./pages/CardPage";
+import Pokedeck from "./pages/pokedeck/Pokedeck";
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       {
         path: "/shop",
         element: <Shop />,
+      },
+      {
+        path: "/pokedeck",
+        element: <Pokedeck />,
       },
       {
         path: "*",

@@ -20,6 +20,9 @@ function Navbar({ basketCount }) {
           <NavLink to="/search">Recherche</NavLink>
         </li>
         <li>
+          <NavLink to="/pokedeck">Mon Pokedeck</NavLink>
+        </li>
+        <li>
           <NavLink to="/shop">Boutique</NavLink>
         </li>
       </ul>
