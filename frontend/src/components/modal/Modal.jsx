@@ -5,16 +5,18 @@ import ConfirmModal from "../confirmModal/ConfirmModal";
 import pokeball from "../../assets/pokeball.png";
 import shop from "../../assets/basket.png";
 import styles from "./modal.module.css";
+import { useBasket } from "../../context/BasketContext";
 
-function Modal({
-  toggleModal,
-  setBasketCount,
-  basketCount,
-  largeImage,
-  name,
-  price,
-  id,
-}) {
+function Modal({ toggleModal, largeImage, name, price, id }) {
+  const {
+    basketCount,
+    setBasketCount,
+    prices,
+    setPrices,
+    cardItems,
+    setCardItems,
+  } = useBasket();
+
   const [isHovering, setIsHovering] = useState(false);
   const handleMouseOver = () => {
     setIsHovering(true);
@@ -33,10 +35,26 @@ function Modal({
       setAdded(false);
     }, 1500);
   };
+
   const shopClick = () => {
+    const itemIndex = cardItems.findIndex((item) => item.name === name);
+
+    if (itemIndex !== -1) {
+      cardItems[itemIndex].quantity += 1;
+    } else {
+      const newItem = {
+        nameItem: name,
+        priceItem: price,
+        image: largeImage,
+        quantity: 1,
+      };
+      cardItems.push(newItem);
+    }
     setBasketCount(basketCount + 1);
     setTypeButton(false);
     setAdded(!added);
+    setPrices(prices + price);
+    setCardItems([...cardItems]);
     setTimeout(() => {
       setAdded(false);
     }, 1500);
@@ -96,8 +114,6 @@ function Modal({
 export default Modal;
 
 Modal.propTypes = {
-  basketCount: PropTypes.number.isRequired,
-  setBasketCount: PropTypes.func.isRequired,
   toggleModal: PropTypes.func.isRequired,
   largeImage: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,

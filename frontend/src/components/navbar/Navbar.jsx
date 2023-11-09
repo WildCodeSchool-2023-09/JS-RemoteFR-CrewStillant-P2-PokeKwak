@@ -1,18 +1,18 @@
 import { NavLink } from "react-router-dom";
-import PropTypes from "prop-types";
 import React from "react";
 import styles from "./navbar.module.css";
 import Logo from "../../assets/logo.png";
-import Basket from "../../assets/basket.png";
+import { useBasket } from "../../context/BasketContext";
 
-function Navbar({ basketCount }) {
+function Navbar() {
+  const { basketCount } = useBasket();
   return (
     <nav className={styles.navbar}>
       <div className={styles.logo}>
         <img src={Logo} alt="logo" />
       </div>
       <h1 className={styles.title}>Pokekwak</h1>
-      <ul>
+      <ul className={styles.link}>
         <li>
           <NavLink to="/">Accueil</NavLink>
         </li>
@@ -23,19 +23,11 @@ function Navbar({ basketCount }) {
           <NavLink to="/pokedeck">Mon Pokedeck</NavLink>
         </li>
         <li>
-          <NavLink to="/shop">Boutique</NavLink>
+          <NavLink to="/shop">Mon panier &nbsp;{basketCount}</NavLink>
         </li>
       </ul>
-      <button type="button" className={styles.basket}>
-        <img src={Basket} alt="basket" />
-        {basketCount}
-      </button>
     </nav>
   );
 }
 
 export default Navbar;
-
-Navbar.propTypes = {
-  basketCount: PropTypes.number.isRequired,
-};
