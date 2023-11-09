@@ -1,7 +1,9 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 import styles from "./filters.module.css";
+import SearchBar from "./searchBar/SearchBar";
 
-function Filters() {
+function Filters({ setSearchValue }) {
   const [reduce, setReduce] = useState("Reduce");
   const [buttonName, setButtonName] = useState("<");
   const reduceClick = () => {
@@ -10,6 +12,7 @@ function Filters() {
   };
   return (
     <div className={styles.filters}>
+      <SearchBar setSearchValue={setSearchValue} />
       <div className={reduce ? styles.notReduce : styles.reduce}>
         <div className="collection">
           <h1>Collection list</h1>
@@ -43,4 +46,7 @@ function Filters() {
   );
 }
 
+Filters.propTypes = {
+  setSearchValue: PropTypes.func.isRequired,
+};
 export default Filters;

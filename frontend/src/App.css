@@ -8,3 +8,7 @@ body {
   display: flex;
   flex-direction: row;
 }
+
+body.active-modal {
+  overflow-y: hidden;
+}

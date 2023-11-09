@@ -2,70 +2,7 @@
   width: max-content;
   border-radius: 15px;
 }
-.smallCard {
-  opacity: 1;
+
+.smallImg {
   padding: 0;
-  border: 0;
-  margin: 0;
-}
-
-.smallimg {
-  padding: 0;
-}
-
-.hiddenCard {
-  display: none;
-}
-
-.notVisible {
-  display: none;
-}
-
-.isVisible {
-  background-color: rgba(133, 117, 213, 0.5);
-  border-radius: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: end;
-  gap: 1rem;
-  padding: 1rem;
-}
-
-.cardDescription {
-  padding-right: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: end;
-  gap: 1rem;
-}
-
-.shop {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 1.5rem;
-  padding-right: 0.5rem;
-}
-.addFavorite {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 1rem;
-}
-.buttonFavorite {
-  background: none;
-  border: none;
-}
-.shopButton {
-  border-radius: 100%;
-  border: solid rgba(133, 117, 213, 1) 2px;
-  height: max-content;
-  background-color: rgba(133, 117, 213, 0.75);
-}
-.label {
-  font-size: 2rem;
-}
-
-p {
-  font-size: 2.5rem;
 }
