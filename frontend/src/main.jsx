@@ -24,6 +24,7 @@ const router = createBrowserRouter([
           const cards = fetch(
             "https://api.pokemontcg.io/v2/cards?pageSize=50"
           ).then((res) => res.json());
+
           return defer({ cards });
         },
         children: [

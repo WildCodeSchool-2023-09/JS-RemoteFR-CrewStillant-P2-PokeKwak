@@ -15,6 +15,8 @@ function Modal({ toggleModal, largeImage, name, price, id }) {
     setPrices,
     cardItems,
     setCardItems,
+    favoriteCard,
+    setFavoriteCard,
   } = useBasket();
 
   const [isHovering, setIsHovering] = useState(false);
@@ -29,6 +31,19 @@ function Modal({ toggleModal, largeImage, name, price, id }) {
   const [typeButton, setTypeButton] = useState("");
 
   const favortiteClick = () => {
+    const favoriteIndex = favoriteCard.findIndex((item) => item.name === name);
+
+    if (favoriteIndex !== -1) {
+      cardItems[favoriteIndex].quantity += 1;
+    } else {
+      const newFavoriteItem = {
+        idCard: id,
+        cardName: name,
+        image: largeImage,
+      };
+      favoriteCard.push(newFavoriteItem);
+    }
+    setFavoriteCard([...favoriteCard]);
     setTypeButton(true);
     setAdded(!added);
     setTimeout(() => {

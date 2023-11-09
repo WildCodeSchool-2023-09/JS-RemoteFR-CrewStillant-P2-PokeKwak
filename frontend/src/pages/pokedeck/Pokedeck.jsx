@@ -1,14 +1,19 @@
+import { useBasket } from "../../context/BasketContext";
 import styles from "./pokedeck.module.css";
 
 function Pokedeck() {
+  const { favoriteCard } = useBasket;
+
   return (
     <div className={styles.pokedeck}>
       <h1>Mon Pokedeck</h1>
       <div className={styles.cards}>
-        <div className={styles.myCard}>
-          <img src="" alt="name" />
-          <p>Nom du pokemon</p>
-        </div>
+        {favoriteCard.map((c) => (
+          <div className={styles.myCard} key={c.idCard}>
+            <img src={c.image} alt={c.cardName} />
+            <p>{c.cardName}</p>
+          </div>
+        ))}
       </div>
     </div>
   );
