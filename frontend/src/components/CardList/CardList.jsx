@@ -46,7 +46,6 @@ function CardList({ basketCount, setBasketCount }) {
             ))}
         </div>
       )}
-
     </div>
   );
 }
