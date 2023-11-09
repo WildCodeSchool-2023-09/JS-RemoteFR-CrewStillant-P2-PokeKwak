@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-
 import { NavLink } from "react-router-dom";
+import ConfirmModal from "../confirmModal/ConfirmModal";
 import pokeball from "../../assets/pokeball.png";
 import shop from "../../assets/basket.png";
 import styles from "./modal.module.css";
@@ -23,14 +23,36 @@ function Modal({
     setIsHovering(false);
   };
 
+  const [added, setAdded] = useState(false);
+  const [typeButton, setTypeButton] = useState("");
+
+  const favortiteClick = () => {
+    setTypeButton(true);
+    setAdded(!added);
+    setTimeout(() => {
+      setAdded(false);
+    }, 1500);
+  };
   const shopClick = () => {
     setBasketCount(basketCount + 1);
+    setTypeButton(false);
+    setAdded(!added);
+    setTimeout(() => {
+      setAdded(false);
+    }, 1500);
   };
 
   return (
     <div className={styles.modal}>
       <div className={styles.overlay}>
         <div className={styles.modalContent}>
+          <button
+            className={styles.closeModal}
+            type="button"
+            onClick={toggleModal}
+          >
+            X
+          </button>
           <img src={largeImage} alt={name} className={styles.largeImage} />
           <span className={styles.cardDescription}>
             <div className={styles.addFavorite}>
@@ -46,12 +68,14 @@ function Modal({
                 onFocus={handleMouseOver}
                 onMouseOut={handleMouseOut}
                 onBlur={handleMouseOut}
+                onClick={favortiteClick}
                 className={styles.buttonFavorite}
               >
                 <img src={pokeball} alt="pokeball" />
               </button>
             </div>
             <div className={styles.shop}>
+              <NavLink to={`/search/${id}`}>En savoir plus</NavLink>
               <p>{price}€</p>
               <button
                 type="button"
@@ -61,14 +85,9 @@ function Modal({
                 <img src={shop} alt="Ajout au panier" />
               </button>
             </div>
-            <form method="dialog">
-              <button type="button" onClick={toggleModal}>
-                Fermer
-              </button>
-              <NavLink to={`/search/${id}`}>En savoir plus</NavLink>
-            </form>
           </span>
         </div>
+        {added && <ConfirmModal typeButton={typeButton} />}
       </div>
     </div>
   );
