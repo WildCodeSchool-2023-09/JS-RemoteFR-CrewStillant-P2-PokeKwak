@@ -7,6 +7,12 @@ import Filters from "../filters/Filters";
 function CardList({ basketCount, setBasketCount }) {
   const [apiData, setApiData] = useState([]);
 
+  const [searchValue, setSearchValue] = useState("");
+
+  const filteredCards = apiData.filter((card) =>
+    card.name.toLowerCase().startsWith(searchValue.toLowerCase())
+  );
+
   useEffect(() => {
     fetch("https://api.pokemontcg.io/v2/cards?pageSize=50")
       .then((res) => res.json())
@@ -15,10 +21,11 @@ function CardList({ basketCount, setBasketCount }) {
 
   return (
     <div className={styles.search}>
-      <Filters />
-      <div className={styles.cardList}>
+
+      <Filters setSearchValue={setSearchValue} />
+      <div className={styles.CardList}>
         {apiData.length &&
-          apiData.map((p) => (
+          filteredCards.map((p) => (
             <Card
               key={p.id}
               name={p.name}
