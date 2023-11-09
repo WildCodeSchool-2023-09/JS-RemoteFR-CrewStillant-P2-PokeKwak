@@ -36,18 +36,17 @@ function CardList({ basketCount, setBasketCount }) {
             filteredCards.map((p) => (
               <Card
                 key={p.id}
-                rarity={p.rarity}
                 name={p.name}
                 smallImage={p.images.small}
                 largeImage={p.images.large}
                 price={p.cardmarket.prices.averageSellPrice}
-                types={p.types}
                 basketCount={basketCount}
                 setBasketCount={setBasketCount}
               />
             ))}
         </div>
       )}
+
     </div>
   );
 }

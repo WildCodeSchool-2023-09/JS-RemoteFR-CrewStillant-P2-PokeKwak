@@ -1,4 +1,5 @@
-.CardList {
+.cardList {
+  position: relative;
   background-color: #33303b;
   display: flex;
   flex-wrap: wrap;
