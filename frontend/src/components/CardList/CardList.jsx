@@ -6,6 +6,7 @@ import Filters from "../filters/Filters";
 
 function CardList({ basketCount, setBasketCount }) {
   const [apiData, setApiData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const [searchValue, setSearchValue] = useState("");
 
@@ -16,28 +17,37 @@ function CardList({ basketCount, setBasketCount }) {
   useEffect(() => {
     fetch("https://api.pokemontcg.io/v2/cards?pageSize=50")
       .then((res) => res.json())
-      .then((data) => setApiData(data.data));
+      .then((data) => {
+        setApiData(data.data);
+        setIsLoading(false);
+      });
   }, []);
 
   return (
     <div className={styles.search}>
       <Filters setSearchValue={setSearchValue} />
-      <div className={styles.CardList}>
-        {apiData.length &&
-          filteredCards.map((p) => (
-            <Card
-              key={p.id}
-              rarity={p.rarity}
-              name={p.name}
-              smallImage={p.images.small}
-              largeImage={p.images.large}
-              price={p.cardmarket.prices.averageSellPrice}
-              types={p.types}
-              basketCount={basketCount}
-              setBasketCount={setBasketCount}
-            />
-          ))}
-      </div>
+      {isLoading ? (
+        <div className={styles.positionLoader}>
+          <div className={styles.loader} />
+        </div>
+      ) : (
+        <div className={styles.CardList}>
+          {apiData.length &&
+            filteredCards.map((p) => (
+              <Card
+                key={p.id}
+                rarity={p.rarity}
+                name={p.name}
+                smallImage={p.images.small}
+                largeImage={p.images.large}
+                price={p.cardmarket.prices.averageSellPrice}
+                types={p.types}
+                basketCount={basketCount}
+                setBasketCount={setBasketCount}
+              />
+            ))}
+        </div>
+      )}
     </div>
   );
 }
