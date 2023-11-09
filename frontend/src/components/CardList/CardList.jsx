@@ -31,7 +31,7 @@ function CardList({ basketCount, setBasketCount }) {
           <div className={styles.loader} />
         </div>
       ) : (
-        <div className={styles.CardList}>
+        <div className={styles.cardList}>
           {apiData.length &&
             filteredCards.map((p) => (
               <Card
