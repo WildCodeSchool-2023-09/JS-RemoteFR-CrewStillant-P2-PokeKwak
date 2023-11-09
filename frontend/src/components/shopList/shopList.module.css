@@ -47,6 +47,7 @@
 .cartItems_info {
   display: flex;
   align-items: center;
+  text-align: center;
 }
 
 .textBasket {
