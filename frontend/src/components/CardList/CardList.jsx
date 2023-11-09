@@ -21,7 +21,6 @@ function CardList({ basketCount, setBasketCount }) {
 
   return (
     <div className={styles.search}>
-
       <Filters setSearchValue={setSearchValue} />
       <div className={styles.CardList}>
         {apiData.length &&
