@@ -30,20 +30,18 @@ function Modal({ toggleModal, largeImage, name, price, id }) {
   const [added, setAdded] = useState(false);
   const [typeButton, setTypeButton] = useState("");
 
-  const favortiteClick = () => {
-    const favoriteIndex = favoriteCard.findIndex((item) => item.name === name);
-
-    if (favoriteIndex !== -1) {
-      cardItems[favoriteIndex].quantity += 1;
+  const favoriteClick = () => {
+    const newCard = {
+      idCard: id,
+      cardName: name,
+      image: largeImage,
+    };
+    if (favoriteCard.find((e) => e.cardName === newCard.cardName)) {
+      setFavoriteCard([...favoriteCard]);
     } else {
-      const newFavoriteItem = {
-        idCard: id,
-        cardName: name,
-        image: largeImage,
-      };
-      favoriteCard.push(newFavoriteItem);
+      setFavoriteCard([...favoriteCard, newCard]);
     }
-    setFavoriteCard([...favoriteCard]);
+
     setTypeButton(true);
     setAdded(!added);
     setTimeout(() => {
@@ -65,6 +63,7 @@ function Modal({ toggleModal, largeImage, name, price, id }) {
       };
       cardItems.push(newItem);
     }
+
     setBasketCount(basketCount + 1);
     setTypeButton(false);
     setAdded(!added);
@@ -100,7 +99,7 @@ function Modal({ toggleModal, largeImage, name, price, id }) {
                 onFocus={handleMouseOver}
                 onMouseOut={handleMouseOut}
                 onBlur={handleMouseOut}
-                onClick={favortiteClick}
+                onClick={favoriteClick}
                 className={styles.buttonFavorite}
               >
                 <img src={pokeball} alt="pokeball" />
