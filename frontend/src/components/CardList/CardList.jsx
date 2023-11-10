@@ -19,9 +19,11 @@ function CardList() {
   }, []);
 
   return (
-    <div className={styles.search}>
-      <Filters setSearchValue={setSearchValue} />
-      <div className={styles.CardList}>
+    <div className={styles.all}>
+      <div className={styles.search}>
+        <Filters setSearchValue={setSearchValue} />
+      </div>
+      <div className={styles.cardList}>
         {apiData.length &&
           filteredCards.map((p) => (
             <Card
