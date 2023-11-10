@@ -30,11 +30,13 @@ function ShopList() {
   };
 
   const handleChange = (itemId, quantityChange) => {
-    const updatedCardItems = cardItems.map((item) =>
-      item.idItem === itemId
-        ? { ...item, quantity: Math.max(0, item.quantity + quantityChange) }
-        : item
-    );
+    const updatedCardItems = cardItems
+      .map((item) =>
+        item.idItem === itemId
+          ? { ...item, quantity: Math.max(0, item.quantity + quantityChange) }
+          : item
+      )
+      .filter((item) => item.quantity > 0);
     updateBasket(updatedCardItems);
   };
 
@@ -42,38 +44,48 @@ function ShopList() {
     <>
       <h2 className={styles.titleShop}>Votre Panier</h2>
       <div className={styles.shopList}>
-        {cardItems.map((item) => (
-          <div key={item.idItem} className={styles.cartItems}>
-            <div className={styles.cartItems_img}>
-              <img src={item.image} alt={item.nameItem} />
-              <p>{item.nameItem}</p>
-            </div>
-            <div className={styles.cartItems_info}>
-              <div className={styles.buttonsItems}>
-                <button
-                  type="button"
-                  onClick={() => handleChange(item.idItem, 1)}
-                >
-                  +
-                </button>
-                <span className={styles.quantity}>{item.quantity}</span>
-                <button
-                  type="button"
-                  onClick={() => handleChange(item.idItem, -1)}
-                >
-                  -
-                </button>
-              </div>
-              <div className={styles.priceItems}>
-                <span>{item.priceItem}€</span>
-              </div>
-            </div>
+        {cardItems.length === 0 ? (
+          <div className={styles.basketCount}>
+            <p className={styles.basketAdd}>Votre panier est vide ...</p>
           </div>
-        ))}
-        <div className={styles.textBasket}>
-          <p className={styles.quantity}>Quantité totale : {basketCount}</p>
-          <p className={styles.prices}>Prix total : {roundedPrices} €</p>
-        </div>
+        ) : (
+          <>
+            {cardItems.map((item) => (
+              <div key={item.idItem} className={styles.cartItems}>
+                <div className={styles.cartItems_img}>
+                  <img src={item.image} alt={item.nameItem} />
+                  <p>{item.nameItem}</p>
+                </div>
+                <div className={styles.cartItems_info}>
+                  <div className={styles.buttonsItems}>
+                    <button
+                      type="button"
+                      onClick={() => handleChange(item.idItem, 1)}
+                      className={styles.buttonBasket}
+                    >
+                      +
+                    </button>
+                    <span className={styles.quantity}>{item.quantity}</span>
+                    <button
+                      type="button"
+                      onClick={() => handleChange(item.idItem, -1)}
+                      className={styles.buttonBasket}
+                    >
+                      -
+                    </button>
+                  </div>
+                  <div className={styles.priceItems}>
+                    <span>{item.quantity * item.priceItem}€</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+            <div className={styles.textBasket}>
+              <p className={styles.quantity}>Quantité totale : {basketCount}</p>
+              <p className={styles.prices}>Prix total : {roundedPrices} €</p>
+            </div>
+          </>
+        )}
       </div>
     </>
   );
