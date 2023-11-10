@@ -1,9 +1,15 @@
+.all {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
 .cardList {
   position: relative;
   background-color: #33303b;
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 1.5rem;
   margin-top: 0;
   padding: 1rem;
@@ -12,4 +18,6 @@
 .search {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  gap: 1rem;
 }

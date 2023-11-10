@@ -9,10 +9,10 @@ function Footer() {
       <section>
         <h2>LINKS</h2>
         <div className={styles.columnOne}>
-          <h3>About</h3>
-          <h3>Services</h3>
-          <h3>Contact</h3>
-          <h3>Blog</h3>
+          <p>About</p>
+          <p>Services</p>
+          <p>Contact</p>
+          <p>Blog</p>
         </div>
       </section>
       <section className={styles.columnTwo}>
