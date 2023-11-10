@@ -43,6 +43,7 @@ function Modal({ toggleModal, largeImage, name, price, id }) {
       cardItems[itemIndex].quantity += 1;
     } else {
       const newItem = {
+        idItem: id,
         nameItem: name,
         priceItem: price,
         image: largeImage,
