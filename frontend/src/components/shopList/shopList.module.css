@@ -2,7 +2,7 @@
   border: 2px solid black;
   margin: 2rem;
   color: aliceblue;
-  padding: 1rem;
+  padding: 0.5rem;
 }
 
 .quantity {
@@ -21,7 +21,7 @@
 }
 
 .cartItems_img img {
-  width: 25%;
+  width: 20%;
 }
 
 .cartItems_img {
@@ -41,7 +41,6 @@
 .cartItems {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
 }
 
 .cartItems_info {
@@ -55,23 +54,39 @@
 }
 
 @media (min-width: 760px) {
+  .shopList {
+    border: 2px solid black;
+    margin: 3rem;
+    color: aliceblue;
+    padding: 1rem;
+  }
+
   .cartItems_img img {
-    width: 40%;
+    width: 20%;
   }
 
   .cartItems_img p {
     font-size: 24px;
   }
 
+  .quantity {
+    font-size: 24px;
+  }
+
   .cartItems_img {
     display: flex;
     align-items: center;
-    justify-content: space-between;
   }
 
   .priceItems {
     font-size: 24px;
-    margin-left: 1rem;
+    margin-left: 2rem;
+  }
+
+  .cartItems {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
 
   .titleShop {
@@ -81,12 +96,23 @@
     margin-top: 3rem;
   }
 
+  .cartItems_info {
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .buttonsItems {
+    display: flex;
+    align-items: center;
+  }
+
   .quantity {
     font-size: 24px;
+    margin: 10px;
   }
 
   .prices {
     font-size: 24px;
   }
-
 }
