@@ -1,0 +1,25 @@
+footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  font-size: small;
+  background-color: #9986fa;
+  width: 100%;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+img {
+  padding: 1rem;
+}
+
+p {
+  font-size: small;
+}
+
+@media screen and (min-width: 768px) {
+  .columnOne {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+  }
+}

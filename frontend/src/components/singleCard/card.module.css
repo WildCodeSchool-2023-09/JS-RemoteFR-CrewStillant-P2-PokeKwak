@@ -1,0 +1,13 @@
+.card {
+  width: max-content;
+  border-radius: 15px;
+}
+
+.smallImg {
+  padding: 0;
+}
+
+button {
+  padding: 0;
+  border-radius: 10px;
+}

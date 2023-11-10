@@ -1,0 +1,32 @@
+.modal,
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  position: fixed;
+}
+
+.modalContentShop {
+  position: absolute;
+  top: 10%;
+  left: 38.5%;
+  background-color: lightgreen;
+  border-radius: 20px;
+  border: solid black 2px;
+  text-align: center;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+.modalContentFavorite {
+  position: absolute;
+  top: 10%;
+  left: 37%;
+  background-color: pink;
+  border-radius: 20px;
+  border: solid black 2px;
+  text-align: center;
+  gap: 0.5rem;
+  padding: 1rem;
+}

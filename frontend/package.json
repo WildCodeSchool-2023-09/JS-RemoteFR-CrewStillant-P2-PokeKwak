@@ -24,7 +24,7 @@
     "vite": "^4.4.7"
   },
   "lint-staged": {
-    "*": "prettier --check",
+    "*.jsx": "prettier --check",
     "*.jsx": "eslint"
   }
 }

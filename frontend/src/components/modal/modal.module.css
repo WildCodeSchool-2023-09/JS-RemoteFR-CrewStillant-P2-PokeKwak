@@ -1,0 +1,130 @@
+.modal,
+.overlay {
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  position: fixed;
+}
+
+.overlay {
+  background: rgba(49, 49, 49, 0.8);
+}
+
+.modalContent {
+  position: absolute;
+  top: 20%;
+  left: 40%;
+  background-color: rgba(133, 117, 213);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+.largeImage {
+  width: 25rem;
+  padding: 0;
+}
+
+.cardDescription {
+  padding-right: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  gap: 1rem;
+}
+
+.cardDescription form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.shop {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.shop img {
+  width: 4.5rem;
+  padding: 0;
+}
+
+.addFavorite {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+}
+
+.addFavorite label {
+  font-size: 1.2rem;
+}
+
+.buttonFavorite {
+  background: none;
+  border: none;
+  border-radius: 50%;
+}
+
+.buttonFavorite:hover {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.buttonFavorite:active {
+  box-shadow: none;
+}
+
+.buttonFavorite img {
+  width: 4rem;
+  padding: 0;
+}
+
+.shopButton {
+  padding: 0;
+  border-radius: 100%;
+  height: max-content;
+  border: solid rgba(133, 117, 213, 1) 2px;
+  background-color: rgba(133, 117, 213, 0.75);
+}
+
+.shopButton:hover {
+  border: solid black 2px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.shopButton:active {
+  box-shadow: none;
+}
+
+.label {
+  font-size: 2rem;
+}
+
+p {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.closeModal {
+  font-size: x-large;
+  text-align: center;
+  position: absolute;
+  background: red;
+  color: white;
+  border: solid black 3px;
+  border-radius: 50%;
+  top: -13px;
+  right: -13px;
+}
+
+.closeModal:active {
+  transform: translate(0px, 3px);
+}

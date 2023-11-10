@@ -1,0 +1,37 @@
+.HomeImage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.smallImage {
+  margin: 0;
+  padding: 0;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+}
+
+.CatchThem {
+  margin-bottom: 2rem;
+  margin-top: 0;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+}
+
+.text {
+  margin: 0;
+  padding: 0;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: white;
+  text-align: center;
+}
+
+.welcome {
+  color: white;
+  font-size: 24px;
+}
