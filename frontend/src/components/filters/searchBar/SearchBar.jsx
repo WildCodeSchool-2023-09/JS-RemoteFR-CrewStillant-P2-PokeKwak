@@ -1,9 +1,16 @@
 import PropTypes from "prop-types";
+import { useState } from "react";
 import styles from "./searchBar.module.css";
 
-function SearchBar({ setSearchValue }) {
+function SearchBar({ filteredCards, setFilteredCards }) {
+  const [searchValue, setSearchValue] = useState("");
   const handleChange = (e) => {
     setSearchValue(e.target.value);
+    setFilteredCards(
+      filteredCards.filter((card) =>
+        card.name.toLowerCase().startsWith(searchValue.toLowerCase())
+      )
+    );
   };
   return (
     <div>
@@ -16,6 +23,7 @@ function SearchBar({ setSearchValue }) {
 }
 
 SearchBar.propTypes = {
-  setSearchValue: PropTypes.func.isRequired,
+  setFilteredCards: PropTypes.func.isRequired,
+  filteredCards: PropTypes.arrayOf(PropTypes.shape).isRequired,
 };
 export default SearchBar;
