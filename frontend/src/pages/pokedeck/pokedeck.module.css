@@ -1,4 +1,5 @@
 .pokedeck {
+  color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,4 +23,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+img {
+  width: 10rem;
+}
+
+p {
+  font-size: large;
 }

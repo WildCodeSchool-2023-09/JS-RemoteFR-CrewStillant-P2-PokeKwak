@@ -2,7 +2,7 @@ import { useBasket } from "../../context/BasketContext";
 import styles from "./pokedeck.module.css";
 
 function Pokedeck() {
-  const { favoriteCard } = useBasket;
+  const { favoriteCard } = useBasket();
 
   return (
     <div className={styles.pokedeck}>

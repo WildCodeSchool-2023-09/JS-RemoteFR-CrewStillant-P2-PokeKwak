@@ -74,7 +74,6 @@ function Modal({ toggleModal, largeImage, name, price, id }) {
       setAdded(false);
     }, 1500);
   };
-
   return (
     <div className={styles.modal}>
       <div className={styles.overlay}>
