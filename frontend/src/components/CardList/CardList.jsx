@@ -1,10 +1,9 @@
-import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import styles from "./CardList.module.css";
 import Card from "../singleCard/Card";
 import Filters from "../filters/Filters";
 
-function CardList({ basketCount, setBasketCount }) {
+function CardList() {
   const [filteredCards, setFilteredCards] = useState([]);
 
   useEffect(() => {
@@ -14,32 +13,28 @@ function CardList({ basketCount, setBasketCount }) {
   }, []);
 
   return (
-    <div className={styles.search}>
-      <Filters
-        filteredCards={filteredCards}
-        setFilteredCards={setFilteredCards}
-      />
-      <div className={styles.CardList}>
-        {filteredCards.length &&
-          filteredCards.map((p) => (
-            <Card
-              key={p.id}
-              name={p.name}
-              smallImage={p.images.small}
-              id={p.id}
-              largeImage={p.images.large}
-              basketCount={basketCount}
-              setBasketCount={setBasketCount}
-              price={p.cardmarket.prices.averageSellPrice}
-            />
-          ))}
+    <div className={styles.all}>
+      <div className={styles.search}>
+        <Filters
+          filteredCards={filteredCards}
+          setFilteredCards={setFilteredCards}
+        />
+        <div className={styles.CardList}>
+          {filteredCards.length &&
+            filteredCards.map((p) => (
+              <Card
+                key={p.id}
+                name={p.name}
+                smallImage={p.images.small}
+                id={p.id}
+                largeImage={p.images.large}
+                price={p.cardmarket.prices.averageSellPrice}
+              />
+            ))}
+        </div>
       </div>
     </div>
   );
 }
 
 export default CardList;
-CardList.propTypes = {
-  basketCount: PropTypes.number.isRequired,
-  setBasketCount: PropTypes.func.isRequired,
-};
