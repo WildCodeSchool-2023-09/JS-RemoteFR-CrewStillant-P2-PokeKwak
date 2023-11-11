@@ -6,3 +6,8 @@
 .smallImg {
   padding: 0;
 }
+
+button {
+  padding: 0;
+  border-radius: 10px;
+}
