@@ -5,6 +5,7 @@ import SearchBar from "./searchBar/SearchBar";
 import TypesFilters from "../typesFilters/TypesFilters";
 import RarityFilters from "../rarityFilters/RarityFilters";
 import SetFilters from "../setFilters/SetFilters";
+import PricesFilters from "../pricesFilters/PricesFilters";
 
 function Filters({ filteredCards, setFilteredCards }) {
   const [reduce, setReduce] = useState("Reduce");
@@ -39,15 +40,9 @@ function Filters({ filteredCards, setFilteredCards }) {
           />
         </div>
         <div className="price">
-          <h1>Price of Cards</h1>
-          <input
-            type="range"
-            id="prices"
-            name="prices"
-            min="0"
-            value={filteredCards.prices}
-            max="300"
-            step="5"
+          <PricesFilters
+            setFilteredCards={setFilteredCards}
+            filteredCards={filteredCards}
           />
         </div>
         <div className="reset">
