@@ -6,6 +6,7 @@ import HomePage from "./pages/homePage/HomePage";
 import SearchingCard from "./pages/SearchingCard";
 import Shop from "./pages/Shop";
 import CardPage from "./pages/CardPage";
+import Pokedeck from "./pages/pokedeck/Pokedeck";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
           const cards = fetch(
             "https://api.pokemontcg.io/v2/cards?pageSize=50"
           ).then((res) => res.json());
+
           return defer({ cards });
         },
         children: [
@@ -41,6 +43,10 @@ const router = createBrowserRouter([
       {
         path: "/shop",
         element: <Shop />,
+      },
+      {
+        path: "/pokedeck",
+        element: <Pokedeck />,
       },
       {
         path: "*",

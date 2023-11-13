@@ -15,6 +15,8 @@ function Modal({ toggleModal, largeImage, name, price, id }) {
     setPrices,
     cardItems,
     setCardItems,
+    favoriteCard,
+    setFavoriteCard,
   } = useBasket();
 
   const [isHovering, setIsHovering] = useState(false);
@@ -28,7 +30,18 @@ function Modal({ toggleModal, largeImage, name, price, id }) {
   const [added, setAdded] = useState(false);
   const [typeButton, setTypeButton] = useState("");
 
-  const favortiteClick = () => {
+  const favoriteClick = () => {
+    const newCard = {
+      idCard: id,
+      cardName: name,
+      image: largeImage,
+    };
+    if (favoriteCard.find((e) => e.cardName === newCard.cardName)) {
+      setFavoriteCard([...favoriteCard]);
+    } else {
+      setFavoriteCard([...favoriteCard, newCard]);
+    }
+
     setTypeButton(true);
     setAdded(!added);
     setTimeout(() => {
@@ -51,6 +64,7 @@ function Modal({ toggleModal, largeImage, name, price, id }) {
       };
       cardItems.push(newItem);
     }
+
     setBasketCount(basketCount + 1);
     setTypeButton(false);
     setAdded(!added);
@@ -60,7 +74,6 @@ function Modal({ toggleModal, largeImage, name, price, id }) {
       setAdded(false);
     }, 1500);
   };
-
   return (
     <div className={styles.modal}>
       <div className={styles.overlay}>
@@ -87,7 +100,7 @@ function Modal({ toggleModal, largeImage, name, price, id }) {
                 onFocus={handleMouseOver}
                 onMouseOut={handleMouseOut}
                 onBlur={handleMouseOut}
-                onClick={favortiteClick}
+                onClick={favoriteClick}
                 className={styles.buttonFavorite}
               >
                 <img src={pokeball} alt="pokeball" />
