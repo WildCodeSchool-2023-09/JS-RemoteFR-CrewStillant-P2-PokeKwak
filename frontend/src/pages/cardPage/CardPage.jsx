@@ -6,7 +6,6 @@ import deckbox from "../../assets/deckbox.png";
 
 function CardPage() {
   const card = useLoaderData();
-
   return (
     <div className={styles.card}>
       <img src={card.data.images.large} alt={card.data.name} />
