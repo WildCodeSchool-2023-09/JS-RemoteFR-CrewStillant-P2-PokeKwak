@@ -31,6 +31,7 @@
 
 .cartItems_img p {
   font-size: 14px;
+  margin-left: 1rem;
 }
 
 .priceItems {
@@ -53,6 +54,26 @@
   text-align: end;
 }
 
+.buttonsItems {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.basketAdd {
+  font-size: 14px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.basketCount {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 8rem;
+}
+
 @media (min-width: 760px) {
   .shopList {
     border: 2px solid black;
@@ -66,11 +87,15 @@
   }
 
   .cartItems_img p {
-    font-size: 24px;
+    font-size: 28px;
+  }
+
+  .buttonBasket {
+    padding: 0.5rem;
   }
 
   .quantity {
-    font-size: 24px;
+    font-size: 28px;
   }
 
   .cartItems_img {
@@ -79,7 +104,7 @@
   }
 
   .priceItems {
-    font-size: 24px;
+    font-size: 28px;
     margin-left: 2rem;
   }
 
@@ -91,7 +116,7 @@
 
   .titleShop {
     color: aliceblue;
-    font-size: 26px;
+    font-size: 28px;
     text-align: center;
     margin-top: 3rem;
   }
@@ -105,14 +130,19 @@
   .buttonsItems {
     display: flex;
     align-items: center;
+    margin-right: 10px;
   }
 
   .quantity {
-    font-size: 24px;
+    font-size: 28px;
     margin: 10px;
   }
 
   .prices {
-    font-size: 24px;
+    font-size: 28px;
+  }
+
+  .basketAdd {
+    font-size: 28px;
   }
 }
