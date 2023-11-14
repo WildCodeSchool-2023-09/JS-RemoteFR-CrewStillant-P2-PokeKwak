@@ -20,6 +20,9 @@ function Navbar() {
           <NavLink to="/search">Recherche</NavLink>
         </li>
         <li>
+          <NavLink to="/pokedeck">Mon Pokedeck</NavLink>
+        </li>
+        <li>
           <NavLink to="/shop">Mon panier &nbsp;{basketCount}</NavLink>
         </li>
       </ul>
