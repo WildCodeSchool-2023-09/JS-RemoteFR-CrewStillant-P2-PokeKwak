@@ -3,6 +3,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-image: url(../../assets/backpurple.jpg);
+  background-size: cover;
+}
+
+.button {
+  width: 6rem;
 }
 
 .smallImage {
@@ -23,7 +29,10 @@
 .navContent {
   padding: 1rem;
   text-align: center;
-  margin-bottom: 3rem;
+  margin-top: 0.5rem;
+  width: 100%;
+  background-color: rgba(128, 128, 128, 0.416);
+  border-radius: 1rem;
 }
 
 .text {
