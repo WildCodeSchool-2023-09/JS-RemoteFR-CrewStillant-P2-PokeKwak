@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import styles from "./shopList.module.css";
 import { useBasket } from "../../context/BasketContext";
 
@@ -39,14 +40,13 @@ function ShopList() {
       .filter((item) => item.quantity > 0);
     updateBasket(updatedCardItems);
   };
-
   return (
     <>
       <h2 className={styles.titleShop}>Votre Panier</h2>
       <div className={styles.shopList}>
         {cardItems.length === 0 ? (
           <div className={styles.basketCount}>
-            <p className={styles.basketAdd}>Votre panier est vide ...</p>
+            <p className={styles.basketAdd}>Le panier est vide ...</p>
           </div>
         ) : (
           <>
@@ -54,7 +54,9 @@ function ShopList() {
               <div key={item.idItem} className={styles.cartItems}>
                 <div className={styles.cartItems_img}>
                   <img src={item.image} alt={item.nameItem} />
-                  <p>{item.nameItem}</p>
+                  <NavLink to={`/search/${item.idItem}`}>
+                    {item.nameItem}
+                  </NavLink>
                 </div>
                 <div className={styles.cartItems_info}>
                   <div className={styles.buttonsItems}>

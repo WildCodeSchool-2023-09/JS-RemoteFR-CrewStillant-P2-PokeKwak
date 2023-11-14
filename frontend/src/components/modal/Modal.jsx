@@ -9,6 +9,8 @@ import { useBasket } from "../../context/BasketContext";
 
 function Modal({ toggleModal, largeImage, name, price, id }) {
   const {
+    toto,
+    setToto,
     basketCount,
     setBasketCount,
     prices,
@@ -36,24 +38,27 @@ function Modal({ toggleModal, largeImage, name, price, id }) {
       cardName: name,
       image: largeImage,
     };
-    if (favoriteCard.find((e) => e.cardName === newCard.cardName)) {
+    if (favoriteCard.find((e) => e.idCard === newCard.idCard)) {
       setFavoriteCard([...favoriteCard]);
+      setToto(true);
     } else {
       setFavoriteCard([...favoriteCard, newCard]);
+      setToto(false);
     }
 
     setTypeButton(true);
     setAdded(!added);
     setTimeout(() => {
       setAdded(false);
-    }, 1500);
+    }, 1000);
   };
 
   const shopClick = () => {
-    const itemIndex = cardItems.findIndex((item) => item.name === name);
+    const item = cardItems.find((c) => c.idItem === id);
 
-    if (itemIndex !== -1) {
-      cardItems[itemIndex].quantity += 1;
+    if (item) {
+      item.quantity += 1;
+      setCardItems([...cardItems]);
     } else {
       const newItem = {
         idItem: id,
@@ -62,18 +67,17 @@ function Modal({ toggleModal, largeImage, name, price, id }) {
         image: largeImage,
         quantity: 1,
       };
-      cardItems.push(newItem);
+      setCardItems([...cardItems, newItem]);
     }
-
+    setPrices(prices + price);
     setBasketCount(basketCount + 1);
     setTypeButton(false);
     setAdded(!added);
-    setPrices(prices + price);
-    setCardItems([...cardItems]);
     setTimeout(() => {
       setAdded(false);
-    }, 1500);
+    }, 1000);
   };
+
   return (
     <div className={styles.modal}>
       <div className={styles.overlay}>
@@ -119,7 +123,7 @@ function Modal({ toggleModal, largeImage, name, price, id }) {
             </div>
           </span>
         </div>
-        {added && <ConfirmModal typeButton={typeButton} />}
+        {added && <ConfirmModal typeButton={typeButton} toto={toto} />}
       </div>
     </div>
   );

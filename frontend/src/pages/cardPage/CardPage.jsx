@@ -1,4 +1,7 @@
 import { useLoaderData, NavLink } from "react-router-dom";
+import { useState } from "react";
+import { useBasket } from "../../context/BasketContext";
+import ConfirmModal from "../../components/confirmModal/ConfirmModal";
 import styles from "./cardPage.module.css";
 import pokeball from "../../assets/pokeball.png";
 import shop from "../../assets/basket.png";
@@ -6,32 +9,99 @@ import deckbox from "../../assets/deckbox.png";
 
 function CardPage() {
   const card = useLoaderData();
+  const {
+    toto,
+    setToto,
+    basketCount,
+    setBasketCount,
+    prices,
+    setPrices,
+    cardItems,
+    setCardItems,
+    favoriteCard,
+    setFavoriteCard,
+  } = useBasket();
+  const [added, setAdded] = useState(false);
+  const [typeButton, setTypeButton] = useState("");
+
+  const favoriteClick = () => {
+    const newCard = {
+      idCard: card.data.id,
+      cardName: card.data.name,
+      image: card.data.images.large,
+    };
+    if (favoriteCard.find((e) => e.idCard === newCard.idCard)) {
+      setFavoriteCard([...favoriteCard]);
+      setToto(true);
+    } else {
+      setFavoriteCard([...favoriteCard, newCard]);
+      setToto(false);
+    }
+
+    setTypeButton(true);
+    setAdded(!added);
+    setTimeout(() => {
+      setAdded(false);
+    }, 1000);
+  };
+
+  const shopClick = () => {
+    const item = cardItems.find((c) => c.idItem === card.data.id);
+
+    if (item) {
+      item.quantity += 1;
+      setCardItems([...cardItems]);
+    } else {
+      const newItem = {
+        idItem: card.data.id,
+        nameItem: card.data.name,
+        priceItem: card.data.cardmarket.prices.averageSellPrice,
+        image: card.data.images.large,
+        quantity: 1,
+      };
+      setCardItems([...cardItems, newItem]);
+    }
+    setPrices(prices + card.data.cardmarket.prices.averageSellPrice);
+    setBasketCount(basketCount + 1);
+    setTypeButton(false);
+    setAdded(!added);
+    setTimeout(() => {
+      setAdded(false);
+    }, 1000);
+  };
+
   return (
     <div className={styles.card}>
-      <img src={card.data.images.large} alt={card.data.name} />
-      <div className={styles.cardText}>
-        <h1>{card.data.name}</h1>
-        <p>Types : {card.data.types[0]}</p>
-        <p>Supertype : {card.data.supertype}</p>
-        <p>Set : {card.data.set.name}</p>
-        <p>Rareté : {card.data.rarity} </p>
-        <p>Artiste : {card.data.artist}</p>
-        <p>Prix : {card.data.cardmarket.prices.averageSellPrice} €</p>
-        <p>Description : {card.data.flavorText} </p>
-
-        <div className={styles.buttons}>
-          <button type="button">
+      <img
+        className={styles.cardimg}
+        src={card.data.images.large}
+        alt={card.data.name}
+      />
+      <div className={styles.desc}>
+        <div className={styles.cardText}>
+          <h1>{card.data.name}</h1>
+          <p>Types : {card.data.types[0]}</p>
+          <p>Supertype : {card.data.supertype}</p>
+          <p>Set : {card.data.set.name}</p>
+          <p>Rareté : {card.data.rarity} </p>
+          <p>Artiste : {card.data.artist}</p>
+          <p>Prix : {card.data.cardmarket.prices.averageSellPrice} €</p>
+          <p>Description : {card.data.flavorText} </p>
+        </div>
+        <div className={styles.cardbuttons}>
+          <button type="button" onClick={shopClick}>
             <img src={shop} alt="Ajout au panier" />
-            Ajouter au panier
+            Panier + 1
           </button>
-          <button type="button">
+          <button type="button" onClick={favoriteClick}>
             <img src={pokeball} alt="pokeball" />
-            Ajouter au Pokedeck
+            Pokedeck + 1
           </button>
           <button type="button">
             <img src={deckbox} alt="Cartes" />
-            <NavLink to="/search">Retour aux cartes</NavLink>
+            <NavLink to="/search">Retour</NavLink>
           </button>
+          {added && <ConfirmModal typeButton={typeButton} toto={toto} />}
         </div>
       </div>
     </div>

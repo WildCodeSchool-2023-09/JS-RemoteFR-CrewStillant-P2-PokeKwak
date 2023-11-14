@@ -29,11 +29,6 @@
   align-items: center;
 }
 
-.cartItems_img p {
-  font-size: 14px;
-  margin-left: 1rem;
-}
-
 .priceItems {
   font-size: 12px;
   margin-left: 1rem;
@@ -73,6 +68,11 @@
   justify-content: center;
   height: 8rem;
 }
+a {
+  color: white;
+  font-size: 1.5rem;
+  margin-left: 1rem;
+}
 
 @media (min-width: 760px) {
   .shopList {
@@ -86,8 +86,9 @@
     width: 20%;
   }
 
-  .cartItems_img p {
-    font-size: 28px;
+  .cartItems_img a {
+    color: white;
+    font-size: 2rem;
   }
 
   .buttonBasket {
