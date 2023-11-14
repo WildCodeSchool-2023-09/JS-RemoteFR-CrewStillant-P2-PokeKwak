@@ -1,22 +1,16 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import PropTypes from "prop-types";
+
 import styles from "./CardList.module.css";
 import Card from "../singleCard/Card";
 import Filters from "../filters/Filters";
 
-function CardList() {
-  const [apiData, setApiData] = useState([]);
-
+function CardList({ cards }) {
   const [searchValue, setSearchValue] = useState("");
 
-  const filteredCards = apiData.filter((card) =>
+  const filteredCards = cards.data.filter((card) =>
     card.name.toLowerCase().startsWith(searchValue.toLowerCase())
   );
-
-  useEffect(() => {
-    fetch("https://api.pokemontcg.io/v2/cards?pageSize=50")
-      .then((res) => res.json())
-      .then((data) => setApiData(data.data));
-  }, []);
 
   return (
     <div className={styles.all}>
@@ -24,20 +18,23 @@ function CardList() {
         <Filters setSearchValue={setSearchValue} />
       </div>
       <div className={styles.cardList}>
-        {apiData.length &&
-          filteredCards.map((p) => (
-            <Card
-              key={p.id}
-              name={p.name}
-              smallImage={p.images.small}
-              id={p.id}
-              largeImage={p.images.large}
-              price={p.cardmarket.prices.averageSellPrice}
-            />
-          ))}
+        {filteredCards.map((p) => (
+          <Card
+            key={p.id}
+            name={p.name}
+            smallImage={p.images.small}
+            id={p.id}
+            largeImage={p.images.large}
+            price={p.cardmarket.prices.averageSellPrice}
+          />
+        ))}
       </div>
     </div>
   );
 }
+
+CardList.propTypes = {
+  cards: PropTypes.func.isRequired,
+};
 
 export default CardList;
