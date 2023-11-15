@@ -10,8 +10,8 @@ import deckbox from "../../assets/deckbox.png";
 function CardPage() {
   const card = useLoaderData();
   const {
-    toto,
-    setToto,
+    present,
+    setPresent,
     basketCount,
     setBasketCount,
     prices,
@@ -32,10 +32,10 @@ function CardPage() {
     };
     if (favoriteCard.find((e) => e.idCard === newCard.idCard)) {
       setFavoriteCard([...favoriteCard]);
-      setToto(true);
+      setPresent(true);
     } else {
       setFavoriteCard([...favoriteCard, newCard]);
-      setToto(false);
+      setPresent(false);
     }
 
     setTypeButton(true);
@@ -101,7 +101,7 @@ function CardPage() {
             <img src={deckbox} alt="Cartes" />
             <NavLink to="/search">Retour</NavLink>
           </button>
-          {added && <ConfirmModal typeButton={typeButton} toto={toto} />}
+          {added && <ConfirmModal typeButton={typeButton} present={present} />}
         </div>
       </div>
     </div>

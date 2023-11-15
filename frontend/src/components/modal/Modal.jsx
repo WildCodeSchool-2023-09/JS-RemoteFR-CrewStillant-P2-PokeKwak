@@ -9,8 +9,8 @@ import { useBasket } from "../../context/BasketContext";
 
 function Modal({ toggleModal, largeImage, name, price, id }) {
   const {
-    toto,
-    setToto,
+    present,
+    setPresent,
     basketCount,
     setBasketCount,
     prices,
@@ -40,10 +40,10 @@ function Modal({ toggleModal, largeImage, name, price, id }) {
     };
     if (favoriteCard.find((e) => e.idCard === newCard.idCard)) {
       setFavoriteCard([...favoriteCard]);
-      setToto(true);
+      setPresent(true);
     } else {
       setFavoriteCard([...favoriteCard, newCard]);
-      setToto(false);
+      setPresent(false);
     }
 
     setTypeButton(true);
@@ -123,7 +123,7 @@ function Modal({ toggleModal, largeImage, name, price, id }) {
             </div>
           </span>
         </div>
-        {added && <ConfirmModal typeButton={typeButton} toto={toto} />}
+        {added && <ConfirmModal typeButton={typeButton} present={present} />}
       </div>
     </div>
   );

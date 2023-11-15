@@ -8,11 +8,11 @@ export default function BasketContextProvider({ children }) {
   const [prices, setPrices] = useState(0);
   const [cardItems, setCardItems] = useState([]);
   const [favoriteCard, setFavoriteCard] = useState([]);
-  const [toto, setToto] = useState(true);
+  const [present, setPresent] = useState(true);
   const BasketContextValue = useMemo(
     () => ({
-      toto,
-      setToto,
+      present,
+      setPresent,
       basketCount,
       setBasketCount,
       setPrices,
@@ -23,8 +23,8 @@ export default function BasketContextProvider({ children }) {
       setFavoriteCard,
     }),
     [
-      toto,
-      setToto,
+      present,
+      setPresent,
       basketCount,
       setBasketCount,
       setPrices,
