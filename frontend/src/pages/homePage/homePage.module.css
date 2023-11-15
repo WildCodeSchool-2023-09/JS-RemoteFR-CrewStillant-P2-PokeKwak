@@ -1,5 +1,6 @@
 .home {
   display: flex;
+  gap: 0.5rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -20,9 +21,8 @@
 }
 
 .CatchThem {
-  margin: 0;
   width: auto;
-  max-width: 100%;
+  max-width: 90%;
   height: auto;
 }
 
