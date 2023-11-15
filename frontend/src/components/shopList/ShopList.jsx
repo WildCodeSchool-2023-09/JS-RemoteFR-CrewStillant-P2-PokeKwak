@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./shopList.module.css";
 import { useBasket } from "../../context/BasketContext";
 
@@ -40,6 +40,22 @@ function ShopList() {
     updateBasket(updatedCardItems);
   };
 
+  useEffect(() => {
+    localStorage.setItem("saveBasket", JSON.stringify(cardItems));
+
+    const updateBasketAdd = cardItems.reduce(
+      (total, item) => total + item.quantity,
+      0
+    );
+    setBasketCount(updateBasketAdd);
+
+    const updatedPricesAdd = cardItems.reduce(
+      (total, item) => total + item.quantity * item.priceItem,
+      0
+    );
+    setPrices(updatedPricesAdd);
+  }, [cardItems]);
+
   return (
     <>
       <h2 className={styles.titleShop}>Votre Panier</h2>
@@ -75,7 +91,12 @@ function ShopList() {
                     </button>
                   </div>
                   <div className={styles.priceItems}>
-                    <span>{item.quantity * item.priceItem}€</span>
+                    <div className={styles.priceItems}>
+                      <span>
+                        {Math.round(item.quantity * item.priceItem * 100) / 100}
+                        €
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
