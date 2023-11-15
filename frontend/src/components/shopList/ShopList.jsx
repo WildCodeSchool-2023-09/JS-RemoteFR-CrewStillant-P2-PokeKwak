@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import styles from "./shopList.module.css";
 import { useBasket } from "../../context/BasketContext";
+import basketAdd from "../../assets/basketAdd.png";
 
 function ShopList() {
   const {
@@ -62,14 +63,19 @@ function ShopList() {
       <div className={styles.shopList}>
         {cardItems.length === 0 ? (
           <div className={styles.basketCount}>
-            <p className={styles.basketAdd}>Votre panier est vide ...</p>
+            <img src={basketAdd} alt="basketAdd" />
+            <p className={styles.basketAdd}>Le panier est vide ...</p>
           </div>
         ) : (
           <>
             {cardItems.map((item) => (
               <div key={item.idItem} className={styles.cartItems}>
                 <div className={styles.cartItems_img}>
-                  <img src={item.image} alt={item.nameItem} />
+                  <img
+                    src={item.image}
+                    alt={item.nameItem}
+                    className={styles.basketAdd}
+                  />
                   <p>{item.nameItem}</p>
                 </div>
                 <div className={styles.cartItems_info}>
