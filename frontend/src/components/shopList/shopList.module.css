@@ -3,19 +3,21 @@
   margin: 2rem;
   color: aliceblue;
   padding: 0.5rem;
+  height: auto;
+  background-color: rgba(65, 59, 80, 0.8);
 }
 
 .quantity {
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .prices {
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .titleShop {
   color: aliceblue;
-  font-size: 16px;
+  font-size: 18px;
   text-align: center;
   margin-top: 3rem;
 }
@@ -30,18 +32,23 @@
 }
 
 .cartItems_img p {
-  font-size: 14px;
+  font-size: 13px;
   margin-left: 1rem;
 }
 
 .priceItems {
-  font-size: 12px;
+  font-size: 13px;
   margin-left: 1rem;
 }
 
 .cartItems {
   display: flex;
   flex-direction: row;
+}
+
+.buttonBasket {
+  padding: 3px;
+  margin: 3px;
 }
 
 .cartItems_info {
@@ -61,17 +68,16 @@
 }
 
 .basketAdd {
-  font-size: 14px;
+  font-size: 12px;
   text-align: center;
   font-weight: bold;
 }
 
 .basketCount {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 8rem;
 }
 
 @media (min-width: 760px) {
@@ -83,7 +89,7 @@
   }
 
   .cartItems_img img {
-    width: 20%;
+    width: 15%;
   }
 
   .cartItems_img p {
@@ -143,6 +149,6 @@
   }
 
   .basketAdd {
-    font-size: 28px;
+    font-size: 15px;
   }
 }
