@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import styles from "./shopList.module.css";
 import { useBasket } from "../../context/BasketContext";
 import basketAdd from "../../assets/basketAdd.png";
@@ -76,7 +77,9 @@ function ShopList() {
                     alt={item.nameItem}
                     className={styles.basketAdd}
                   />
-                  <p>{item.nameItem}</p>
+                  <NavLink to={`/search/${item.idItem}`}>
+                    {item.nameItem}
+                  </NavLink>
                 </div>
                 <div className={styles.cartItems_info}>
                   <div className={styles.buttonsItems}>
