@@ -34,7 +34,23 @@ function CardList({ cards }) {
 }
 
 CardList.propTypes = {
-  cards: PropTypes.func.isRequired,
+  cards: PropTypes.shape({
+    data: PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+        images: PropTypes.shape({
+          small: PropTypes.string.isRequired,
+          large: PropTypes.string.isRequired,
+        }).isRequired,
+        cardmarket: PropTypes.shape({
+          prices: PropTypes.shape({
+            averageSellPrice: PropTypes.number.isRequired,
+          }).isRequired,
+        }).isRequired,
+      })
+    ).isRequired,
+  }).isRequired,
 };
 
 export default CardList;
