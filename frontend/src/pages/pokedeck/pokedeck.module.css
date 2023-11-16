@@ -18,17 +18,53 @@
   padding: 2rem;
 }
 
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.empty p {
+  font-size: 1.5rem;
+}
+
 .myCard {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 0.5rem;
 }
 
-img {
+.cardimg {
   width: 10rem;
+  padding-bottom: 0;
+  transition: all 0.3s ease-out;
 }
 
-p {
+.deleteButton {
+  border: none 2px;
+  background-color: #9986fa;
+  border-radius: 5px;
+  padding: 4px;
+}
+
+.nav {
+  color: white;
   font-size: large;
+  margin: 0;
+}
+
+.cardimg:hover {
+  width: 15rem;
+  transition: all 0.5s ease-out;
+}
+
+@media screen and (max-width: 768px) {
+  .empty img {
+    width: 15rem;
+  }
+  .empty p {
+    font-size: 1rem;
+  }
 }

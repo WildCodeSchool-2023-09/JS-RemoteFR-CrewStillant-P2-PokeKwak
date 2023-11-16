@@ -34,17 +34,16 @@ function CardList({ cards }) {
           data={cards}
         />
         <div className={styles.cardList}>
-          {filteredCards.length &&
-            filteredCards.map((p) => (
-              <Card
-                key={p.id}
-                name={p.name}
-                smallImage={p.images.small}
-                id={p.id}
-                largeImage={p.images.large}
-                price={p.cardmarket.prices.averageSellPrice}
-              />
-            ))}
+          {filteredCards.map((p) => (
+            <Card
+              key={p.id}
+              name={p.name}
+              smallImage={p.images.small}
+              id={p.id}
+              largeImage={p.images.large}
+              price={p.cardmarket.prices.averageSellPrice}
+            />
+          ))}
         </div>
       </div>
     </div>
@@ -52,7 +51,11 @@ function CardList({ cards }) {
 }
 
 CardList.propTypes = {
-  cards: PropTypes.func.isRequired,
+  cards: PropTypes.oneOfType([
+    PropTypes.shape,
+    () => null,
+    PropTypes.instanceOf(Error),
+  ]).isRequired,
 };
 
 export default CardList;

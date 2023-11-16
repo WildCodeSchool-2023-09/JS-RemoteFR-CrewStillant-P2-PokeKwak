@@ -7,7 +7,7 @@ import shop from "../../assets/basket.png";
 import styles from "./modal.module.css";
 import { useBasket } from "../../context/BasketContext";
 
-function Modal({ toggleModal, largeImage, name, price, id }) {
+function Modal({ data, toggleModal, largeImage, name, price, id }) {
   const {
     basketCount,
     setBasketCount,
@@ -29,31 +29,33 @@ function Modal({ toggleModal, largeImage, name, price, id }) {
 
   const [added, setAdded] = useState(false);
   const [typeButton, setTypeButton] = useState("");
-
   const favoriteClick = () => {
-    const newCard = {
-      idCard: id,
-      cardName: name,
-      image: largeImage,
-    };
-    if (favoriteCard.find((e) => e.cardName === newCard.cardName)) {
+    const fav = favoriteCard.find((f) => f.idCard === id);
+
+    if (fav) {
+      const temp = data;
+      temp.isFavorite = true;
       setFavoriteCard([...favoriteCard]);
     } else {
+      const newCard = {
+        idCard: id,
+        cardName: name,
+        image: largeImage,
+      };
       setFavoriteCard([...favoriteCard, newCard]);
     }
-
     setTypeButton(true);
     setAdded(!added);
     setTimeout(() => {
       setAdded(false);
-    }, 1500);
+    }, 1000);
   };
-
   const shopClick = () => {
-    const itemIndex = cardItems.findIndex((item) => item.name === name);
+    const item = cardItems.find((c) => c.idItem === id);
 
-    if (itemIndex !== -1) {
-      cardItems[itemIndex].quantity += 1;
+    if (item) {
+      item.quantity += 1;
+      setCardItems([...cardItems]);
     } else {
       const newItem = {
         idItem: id,
@@ -62,18 +64,17 @@ function Modal({ toggleModal, largeImage, name, price, id }) {
         image: largeImage,
         quantity: 1,
       };
-      cardItems.push(newItem);
+      setCardItems([...cardItems, newItem]);
     }
-
+    setPrices(prices + price);
     setBasketCount(basketCount + 1);
     setTypeButton(false);
     setAdded(!added);
-    setPrices(prices + price);
-    setCardItems([...cardItems]);
     setTimeout(() => {
       setAdded(false);
-    }, 1500);
+    }, 1000);
   };
+
   return (
     <div className={styles.modal}>
       <div className={styles.overlay}>
@@ -119,7 +120,9 @@ function Modal({ toggleModal, largeImage, name, price, id }) {
             </div>
           </span>
         </div>
-        {added && <ConfirmModal typeButton={typeButton} />}
+        {added && (
+          <ConfirmModal typeButton={typeButton} isFavorite={data.isFavorite} />
+        )}
       </div>
     </div>
   );
@@ -128,6 +131,11 @@ function Modal({ toggleModal, largeImage, name, price, id }) {
 export default Modal;
 
 Modal.propTypes = {
+  data: PropTypes.oneOfType([
+    PropTypes.shape,
+    () => null,
+    PropTypes.instanceOf(Error),
+  ]).isRequired,
   toggleModal: PropTypes.func.isRequired,
   largeImage: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
