@@ -1,6 +1,5 @@
 .navbar {
-  width: 100%;
-  height: auto;
+  padding: 1rem;
   background-color: #9986fa;
   border-radius: 10px;
   margin-top: 10px;
@@ -10,18 +9,29 @@
   align-items: center;
 }
 
+.navbar li:hover {
+  background-color: rgb(18, 50, 167);
+}
+
 .navbar a {
   text-decoration: none;
   color: aliceblue;
   font-size: 12px;
 }
 
-.navbar ul {
-  list-style: none;
+.link li {
+  padding: 5px;
+  border-radius: 10px;
 }
 
 .link {
-  margin-right: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  margin: 0;
+  padding: 1rem;
+  padding-right: 0;
+  list-style: none;
 }
 
 .logo img {
@@ -46,7 +56,6 @@
 
 @media (min-width: 768px) {
   .navbar {
-    width: 100%;
     height: 100px;
   }
 
@@ -58,10 +67,6 @@
   .title {
     font-size: 45px;
     -webkit-text-stroke: 2px rgb(18, 50, 167);
-  }
-
-  .link {
-    margin-right: 20px;
   }
 
   .navbar a {

@@ -7,6 +7,7 @@ function HomePage() {
   return (
     <div className={styles.home}>
       <img src={HomeImage} alt="logo" className={styles.smallImage} />
+
       <img src={CatchThem} alt="CatchThem" className={styles.CatchThem} />
       <div className={styles.navContent}>
         <p className={styles.welcome}>

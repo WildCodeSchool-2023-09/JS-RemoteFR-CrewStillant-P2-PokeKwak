@@ -1,25 +1,24 @@
-footer {
+.footer {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   font-size: small;
+  border-radius: 0.5rem;
+  margin-bottom: 10px;
   background-color: #9986fa;
   width: 100%;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
+  gap: 1rem;
 }
-img {
+
+.netWork {
+  gap: 1rem;
+  width: 2rem;
   padding: 1rem;
 }
 
-p {
-  font-size: small;
-}
-
-@media screen and (min-width: 768px) {
-  .columnOne {
-    display: flex;
-    flex-direction: row;
-    gap: 1rem;
-  }
+.columnOne {
+  margin: 1rem;
+  align-items: center;
 }

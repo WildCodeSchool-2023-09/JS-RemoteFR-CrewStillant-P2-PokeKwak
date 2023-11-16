@@ -1,32 +1,24 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import PropTypes from "prop-types";
+
 import styles from "./CardList.module.css";
 import Card from "../singleCard/Card";
 import Filters from "../filters/Filters";
 
-function CardList() {
-  const [data, setData] = useState([]);
-  const [filteredCards, setFilteredCards] = useState(data);
+function CardList({ cards }) {
+  const [filteredCards, setFilteredCards] = useState(cards);
 
-  useEffect(() => {
-    fetch("https://api.pokemontcg.io/v2/cards?pageSize=50")
-      .then((res) => res.json())
-      .then((d) => setData(d.data));
-  }, []);
-  useEffect(() => {
-    setFilteredCards(data);
-  }, [data]);
-
-  const type = new Set(data.map((e) => e.types[0]));
+  const type = new Set(cards.map((e) => e.types[0]));
   const typeArray = Array.from(type);
 
-  const rarity = new Set(data.map((e) => e.rarity));
+  const rarity = new Set(cards.map((e) => e.rarity));
   const rarityArray = Array.from(rarity);
 
-  const collection = new Set(data.map((e) => e.set.name));
+  const collection = new Set(cards.map((e) => e.set.name));
   const collectionArray = Array.from(collection);
 
   const sellPrice = new Set(
-    data.map((e) => parseInt(e.cardmarket.prices.averageSellPrice, 10))
+    cards.map((e) => parseInt(e.cardmarket.prices.averageSellPrice, 10))
   );
   const sellPriceArray = Array.from(sellPrice);
   return (
@@ -39,7 +31,7 @@ function CardList() {
           rarityArray={rarityArray}
           collectionArray={collectionArray}
           sellPriceArray={sellPriceArray}
-          data={data}
+          data={cards}
         />
         <div className={styles.cardList}>
           {filteredCards.length &&
@@ -58,5 +50,9 @@ function CardList() {
     </div>
   );
 }
+
+CardList.propTypes = {
+  cards: PropTypes.func.isRequired,
+};
 
 export default CardList;

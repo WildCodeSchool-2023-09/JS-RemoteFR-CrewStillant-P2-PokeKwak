@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./shopList.module.css";
 import { useBasket } from "../../context/BasketContext";
+import basketAdd from "../../assets/basketAdd.png";
 
 function ShopList() {
   const {
@@ -40,20 +41,41 @@ function ShopList() {
     updateBasket(updatedCardItems);
   };
 
+  useEffect(() => {
+    localStorage.setItem("saveBasket", JSON.stringify(cardItems));
+
+    const updateBasketAdd = cardItems.reduce(
+      (total, item) => total + item.quantity,
+      0
+    );
+    setBasketCount(updateBasketAdd);
+
+    const updatedPricesAdd = cardItems.reduce(
+      (total, item) => total + item.quantity * item.priceItem,
+      0
+    );
+    setPrices(updatedPricesAdd);
+  }, [cardItems]);
+
   return (
     <>
       <h2 className={styles.titleShop}>Votre Panier</h2>
       <div className={styles.shopList}>
         {cardItems.length === 0 ? (
           <div className={styles.basketCount}>
-            <p className={styles.basketAdd}>Votre panier est vide ...</p>
+            <img src={basketAdd} alt="basketAdd" />
+            <p className={styles.basketAdd}>Le panier est vide ...</p>
           </div>
         ) : (
           <>
             {cardItems.map((item) => (
               <div key={item.idItem} className={styles.cartItems}>
                 <div className={styles.cartItems_img}>
-                  <img src={item.image} alt={item.nameItem} />
+                  <img
+                    src={item.image}
+                    alt={item.nameItem}
+                    className={styles.basketAdd}
+                  />
                   <p>{item.nameItem}</p>
                 </div>
                 <div className={styles.cartItems_info}>
@@ -75,7 +97,12 @@ function ShopList() {
                     </button>
                   </div>
                   <div className={styles.priceItems}>
-                    <span>{item.quantity * item.priceItem}€</span>
+                    <div className={styles.priceItems}>
+                      <span>
+                        {Math.round(item.quantity * item.priceItem * 100) / 100}
+                        €
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
