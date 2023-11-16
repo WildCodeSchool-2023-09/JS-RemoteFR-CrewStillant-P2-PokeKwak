@@ -43,17 +43,16 @@ function Modal({ data, toggleModal, largeImage, name, price, id }) {
         image: largeImage,
       };
       setFavoriteCard([...favoriteCard, newCard]);
+      localStorage.setItem(
+        "favoriteCard",
+        JSON.stringify([...favoriteCard, newCard])
+      );
     }
     setTypeButton(true);
     setAdded(!added);
     setTimeout(() => {
       setAdded(false);
     }, 1500);
-    localStorage.setItem(
-      "favoriteCard",
-      JSON.stringify([...favoriteCard, newCard])
-    );
-    }, 1000);
   };
 
   const shopClick = () => {
