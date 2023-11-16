@@ -3,7 +3,7 @@ import { useState } from "react";
 import Modal from "../modal/Modal";
 import styles from "./card.module.css";
 
-function Card({ smallImage, name, id, largeImage, price }) {
+function Card({ data, smallImage, name, id, largeImage, price }) {
   const [modal, setModal] = useState(false);
   const toggleModal = () => {
     setModal(!modal);
@@ -22,6 +22,7 @@ function Card({ smallImage, name, id, largeImage, price }) {
       </div>
       {modal && (
         <Modal
+          data={data}
           toggleModal={toggleModal}
           name={name}
           id={id}
@@ -36,6 +37,11 @@ function Card({ smallImage, name, id, largeImage, price }) {
 export default Card;
 
 Card.propTypes = {
+  data: PropTypes.oneOfType([
+    PropTypes.shape,
+    () => null,
+    PropTypes.instanceOf(Error),
+  ]).isRequired,
   smallImage: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   largeImage: PropTypes.string.isRequired,

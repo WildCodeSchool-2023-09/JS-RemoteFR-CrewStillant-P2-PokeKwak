@@ -10,8 +10,6 @@ import deckbox from "../../assets/deckbox.png";
 function CardPage() {
   const card = useLoaderData();
   const {
-    present,
-    setPresent,
     basketCount,
     setBasketCount,
     prices,
@@ -25,19 +23,19 @@ function CardPage() {
   const [typeButton, setTypeButton] = useState("");
 
   const favoriteClick = () => {
-    const newCard = {
-      idCard: card.data.id,
-      cardName: card.data.name,
-      image: card.data.images.large,
-    };
-    if (favoriteCard.find((e) => e.idCard === newCard.idCard)) {
-      setFavoriteCard([...favoriteCard]);
-      setPresent(true);
-    } else {
-      setFavoriteCard([...favoriteCard, newCard]);
-      setPresent(false);
-    }
+    const fav = favoriteCard.find((f) => f.idCard === card.data.id);
 
+    if (fav) {
+      card.data.isFavorite = true;
+      setFavoriteCard([...favoriteCard]);
+    } else {
+      const newCard = {
+        idCard: card.data.id,
+        cardName: card.data.name,
+        image: card.data.images.large,
+      };
+      setFavoriteCard([...favoriteCard, newCard]);
+    }
     setTypeButton(true);
     setAdded(!added);
     setTimeout(() => {
@@ -101,7 +99,12 @@ function CardPage() {
             <img src={deckbox} alt="Cartes" />
             <NavLink to="/search">Retour</NavLink>
           </button>
-          {added && <ConfirmModal typeButton={typeButton} present={present} />}
+          {added && (
+            <ConfirmModal
+              typeButton={typeButton}
+              isFavorite={card.data.isFavorite}
+            />
+          )}
         </div>
       </div>
     </div>

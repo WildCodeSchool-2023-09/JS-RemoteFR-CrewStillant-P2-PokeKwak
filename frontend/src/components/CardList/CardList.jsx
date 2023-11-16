@@ -7,11 +7,9 @@ import Filters from "../filters/Filters";
 
 function CardList({ cards }) {
   const [searchValue, setSearchValue] = useState("");
-
   const filteredCards = cards.data.filter((card) =>
     card.name.toLowerCase().startsWith(searchValue.toLowerCase())
   );
-
   return (
     <div className={styles.all}>
       <div className={styles.search}>
@@ -20,6 +18,7 @@ function CardList({ cards }) {
       <div className={styles.cardList}>
         {filteredCards.map((p) => (
           <Card
+            data={p}
             key={p.id}
             name={p.name}
             smallImage={p.images.small}
@@ -34,7 +33,11 @@ function CardList({ cards }) {
 }
 
 CardList.propTypes = {
-  cards: PropTypes.func.isRequired,
+  cards: PropTypes.oneOfType([
+    PropTypes.shape,
+    () => null,
+    PropTypes.instanceOf(Error),
+  ]).isRequired,
 };
 
 export default CardList;

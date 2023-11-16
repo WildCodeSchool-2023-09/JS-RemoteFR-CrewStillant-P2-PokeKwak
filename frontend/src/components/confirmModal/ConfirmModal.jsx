@@ -1,13 +1,13 @@
 import PropTypes from "prop-types";
 import styles from "./confirmModal.module.css";
 
-function ConfirmModal({ typeButton, present }) {
+function ConfirmModal({ typeButton, isFavorite }) {
   return (
     <div className={styles.modal}>
       <div className={styles.overlay}>
         {typeButton ? (
           <div className={styles.modalContentFavorite}>
-            {present ? (
+            {isFavorite ? (
               <p>La carte est déjà dans ton Pokédeck !</p>
             ) : (
               <p>La carte a bien été ajouté à ton Pokédeck !</p>
@@ -27,5 +27,7 @@ export default ConfirmModal;
 
 ConfirmModal.propTypes = {
   typeButton: PropTypes.bool.isRequired,
-  present: PropTypes.bool.isRequired,
+  isFavorite: PropTypes.bool,
 };
+
+ConfirmModal.defaultProps = { isFavorite: false };
