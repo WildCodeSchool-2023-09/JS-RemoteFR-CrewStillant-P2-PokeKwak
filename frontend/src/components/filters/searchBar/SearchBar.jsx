@@ -2,12 +2,12 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import styles from "./searchBar.module.css";
 
-function SearchBar({ setFilteredCards, data }) {
+function SearchBar({ setFilteredCards, cards }) {
   const [searchValue, setSearchValue] = useState("");
   const handleChange = (e) => {
     setSearchValue(e.target.value);
     setFilteredCards(
-      data.filter((card) =>
+      cards.filter((card) =>
         card.name.toLowerCase().startsWith(searchValue.toLowerCase())
       )
     );
@@ -24,6 +24,6 @@ function SearchBar({ setFilteredCards, data }) {
 
 SearchBar.propTypes = {
   setFilteredCards: PropTypes.func.isRequired,
-  data: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  cards: PropTypes.arrayOf(PropTypes.shape).isRequired,
 };
 export default SearchBar;
