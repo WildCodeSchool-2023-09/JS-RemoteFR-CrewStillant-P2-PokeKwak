@@ -6,19 +6,19 @@ import Card from "../singleCard/Card";
 import Filters from "../filters/Filters";
 
 function CardList({ cards }) {
-  const [filteredCards, setFilteredCards] = useState(cards.data);
+  const [filteredCards, setFilteredCards] = useState(cards);
 
-  const type = new Set(cards.data.map((e) => e.types[0]));
+  const type = new Set(cards.map((e) => e.types[0]));
   const typeArray = Array.from(type);
 
-  const rarity = new Set(cards.data.map((e) => e.rarity));
+  const rarity = new Set(cards.map((e) => e.rarity));
   const rarityArray = Array.from(rarity);
 
-  const collection = new Set(cards.data.map((e) => e.set.name));
+  const collection = new Set(cards.map((e) => e.set.name));
   const collectionArray = Array.from(collection);
 
   const sellPrice = new Set(
-    cards.data.map((e) => parseInt(e.cardmarket.prices.averageSellPrice, 10))
+    cards.map((e) => parseInt(e.cardmarket.prices.averageSellPrice, 10))
   );
   const sellPriceArray = Array.from(sellPrice);
   return (
@@ -51,7 +51,11 @@ function CardList({ cards }) {
 }
 
 CardList.propTypes = {
-  cards: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  cards: PropTypes.oneOfType([
+    PropTypes.shape,
+    () => null,
+    PropTypes.instanceOf(Error),
+  ]).isRequired,
 };
 
 export default CardList;
