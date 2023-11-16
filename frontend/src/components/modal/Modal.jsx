@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 import ConfirmModal from "../confirmModal/ConfirmModal";
@@ -47,6 +47,10 @@ function Modal({ toggleModal, largeImage, name, price, id }) {
     setTimeout(() => {
       setAdded(false);
     }, 1500);
+    localStorage.setItem(
+      "favoriteCard",
+      JSON.stringify([...favoriteCard, newCard])
+    );
   };
 
   const shopClick = () => {
@@ -74,6 +78,11 @@ function Modal({ toggleModal, largeImage, name, price, id }) {
       setAdded(false);
     }, 1500);
   };
+
+  useEffect(() => {
+    localStorage.setItem("favoriteCard", JSON.stringify(favoriteCard));
+  }, [favoriteCard]);
+
   return (
     <div className={styles.modal}>
       <div className={styles.overlay}>
