@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 import ConfirmModal from "../confirmModal/ConfirmModal";
@@ -43,13 +43,18 @@ function Modal({ data, toggleModal, largeImage, name, price, id }) {
         image: largeImage,
       };
       setFavoriteCard([...favoriteCard, newCard]);
+      localStorage.setItem(
+        "favoriteCard",
+        JSON.stringify([...favoriteCard, newCard])
+      );
     }
     setTypeButton(true);
     setAdded(!added);
     setTimeout(() => {
       setAdded(false);
-    }, 1000);
+    }, 1500);
   };
+
   const shopClick = () => {
     const item = cardItems.find((c) => c.idItem === id);
 
@@ -74,6 +79,10 @@ function Modal({ data, toggleModal, largeImage, name, price, id }) {
       setAdded(false);
     }, 1000);
   };
+
+  useEffect(() => {
+    localStorage.setItem("favoriteCard", JSON.stringify(favoriteCard));
+  }, [favoriteCard]);
 
   return (
     <div className={styles.modal}>

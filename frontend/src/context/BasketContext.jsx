@@ -9,7 +9,9 @@ export default function BasketContextProvider({ children }) {
   const [cardItems, setCardItems] = useState(
     JSON.parse(localStorage.getItem("saveBasket")) || []
   );
-  const [favoriteCard, setFavoriteCard] = useState([]);
+  const [favoriteCard, setFavoriteCard] = useState(
+    JSON.parse(localStorage.getItem("favoriteCard")) || []
+  );
   const BasketContextValue = useMemo(
     () => ({
       basketCount,
