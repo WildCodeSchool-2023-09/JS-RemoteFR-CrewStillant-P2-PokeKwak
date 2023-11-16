@@ -18,6 +18,7 @@
   width: auto;
   max-width: 100%;
   height: auto;
+  animation: float 2.5s ease-out infinite;
 }
 
 .CatchThem {
@@ -47,5 +48,35 @@
 
 .welcome {
   color: white;
-  font-size: 24px;
+  font-size: 1.5rem;
+}
+
+@keyframes float {
+  0% {
+    transform: translatey(10px);
+  }
+  50% {
+    transform: translatey(-30px);
+  }
+  100% {
+    transform: translatey(10px);
+  }
+}
+
+@media (max-width: 768px) {
+  .text {
+    font-size: 1rem;
+  }
+  .welcome {
+    font-size: 1rem;
+  }
+
+  .smallImage {
+    width: 20rem;
+    animation: none;
+  }
+
+  .fantome {
+    width: 7rem;
+  }
 }

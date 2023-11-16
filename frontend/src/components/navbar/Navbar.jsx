@@ -8,8 +8,8 @@ function Navbar() {
   const { basketCount } = useBasket();
   return (
     <nav className={styles.navbar}>
-      <div className={styles.logo}>
-        <img src={Logo} alt="logo" />
+      <div>
+        <img className={styles.logo} src={Logo} alt="logo" />
       </div>
       <h1 className={styles.title}>Pokekwak</h1>
       <ul className={styles.link}>
