@@ -45,6 +45,7 @@
 .cartItems {
   display: flex;
   flex-direction: row;
+  margin-bottom: 1rem;
 }
 
 .buttonBasket {
@@ -72,6 +73,7 @@
   font-size: 12px;
   text-align: center;
   font-weight: bold;
+  margin-top: 1rem;
 }
 
 .basketCount {
@@ -79,8 +81,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 8rem;
+  height: 10rem;
+  margin-bottom: 2rem;
 }
+
+.basketCount img {
+  width: 10%;
+}
+
 a {
   color: white;
   font-size: 1.5rem;

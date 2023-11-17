@@ -23,8 +23,17 @@
   align-items: center;
 }
 
+.columnOne p {
+  font-size: 14px;
+}
+
+.columnTwo p {
+  font-size: 14px;
+}
+
 .fantome {
   position: absolute;
+  height: 20%;
   animation: move 8s linear infinite;
 }
 
