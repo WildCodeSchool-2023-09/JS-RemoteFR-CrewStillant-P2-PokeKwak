@@ -1,3 +1,14 @@
+/* Position and sizing of burger button 
+.bmBurgerButton {
+  position: fixed;
+  width: 36px;
+  height: 30px;
+  left: 36px;
+  top: 36px;
+  background-color: rgba(128, 0, 128, 0);
+  overflow: hidden;
+} */
+
 .filters {
   background-color: #9986fa;
   width: max-content;
@@ -8,7 +19,7 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-  height: 100rem;
+  height: 20rem;
   font-size: 0.5rem;
 }
 

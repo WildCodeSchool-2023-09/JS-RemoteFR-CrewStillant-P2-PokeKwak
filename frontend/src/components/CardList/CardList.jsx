@@ -1,24 +1,31 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
-
 import styles from "./CardList.module.css";
 import Card from "../singleCard/Card";
 import Filters from "../filters/Filters";
 
 function CardList({ cards }) {
-  const [filteredCards, setFilteredCards] = useState(cards);
+  const [filteredCards, setFilteredCards] = useState(cards.data);
 
-  const type = new Set(cards.map((e) => e.types[0]));
+  const type = new Set(
+    cards.data.map((e) => e.types[0]).filter((f) => f !== undefined)
+  );
   const typeArray = Array.from(type);
 
-  const rarity = new Set(cards.map((e) => e.rarity));
+  const rarity = new Set(
+    cards.data.map((e) => e.rarity).filter((f) => f !== undefined)
+  );
   const rarityArray = Array.from(rarity);
 
-  const collection = new Set(cards.map((e) => e.set.name));
+  const collection = new Set(
+    cards.data.map((e) => e.set.name).filter((f) => f !== undefined)
+  );
   const collectionArray = Array.from(collection);
 
   const sellPrice = new Set(
-    cards.map((e) => parseInt(e.cardmarket.prices.averageSellPrice, 10))
+    cards.data
+      .map((e) => parseInt(e.cardmarket.prices.averageSellPrice, 10))
+      .filter((f) => f !== undefined)
   );
   const sellPriceArray = Array.from(sellPrice);
   return (
@@ -31,20 +38,21 @@ function CardList({ cards }) {
           rarityArray={rarityArray}
           collectionArray={collectionArray}
           sellPriceArray={sellPriceArray}
-          data={cards}
+          data={cards.data}
         />
-        <div className={styles.cardList}>
-          {filteredCards.map((p) => (
-            <Card
-              key={p.id}
-              name={p.name}
-              smallImage={p.images.small}
-              id={p.id}
-              largeImage={p.images.large}
-              price={p.cardmarket.prices.averageSellPrice}
-            />
-          ))}
-        </div>
+      </div>
+      <div className={styles.cardList}>
+        {filteredCards.map((p) => (
+          <Card
+            data={p}
+            key={p.id}
+            name={p.name}
+            smallImage={p.images.small}
+            id={p.id}
+            largeImage={p.images.large}
+            price={p.cardmarket.prices.averageSellPrice}
+          />
+        ))}
       </div>
     </div>
   );
