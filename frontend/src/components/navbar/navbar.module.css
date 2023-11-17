@@ -36,11 +36,11 @@
   list-style: none;
 }
 
-.logo img {
-  width: 60px;
-  height: 55px;
+.logo {
+  width: 5rem;
   border-radius: 10px;
   margin-top: 2px;
+  animation: rotating 5s linear infinite;
 }
 
 .title {
@@ -61,7 +61,7 @@
     height: 100px;
   }
 
-  .logo img {
+  .logo {
     width: 100px;
     height: 90px;
   }
@@ -73,5 +73,14 @@
 
   .navbar a {
     font-size: 18px;
+  }
+}
+
+@keyframes rotating {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
   }
 }
