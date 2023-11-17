@@ -1,0 +1,80 @@
+.pokedeck {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.cards {
+  border-radius: 10px;
+  border: solid #9986fa 3px;
+  background-color: rgba(65, 59, 80, 0.8);
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.empty p {
+  font-size: 1.5rem;
+}
+
+.myCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cardimg {
+  width: 10rem;
+  padding-bottom: 0;
+  transition: all 0.3s ease-out;
+}
+
+.deleteButton {
+  border: none 2px;
+  background-color: #9986fa;
+  border-radius: 5px;
+  padding: 4px;
+}
+
+.nav {
+  color: white;
+  font-size: large;
+  margin: 0;
+}
+
+.cardimg:hover {
+  width: 15rem;
+  transition: all 0.5s ease-out;
+}
+
+@media screen and (max-width: 768px) {
+  .empty img {
+    width: 15rem;
+  }
+  .empty p {
+    font-size: 1rem;
+  }
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  background-color: #31256f;
+  border-radius: 10px;
+  padding: 1rem;
+}

@@ -5,7 +5,8 @@ import App from "./App";
 import HomePage from "./pages/homePage/HomePage";
 import SearchingCard from "./pages/SearchingCard";
 import Shop from "./pages/Shop";
-import CardPage from "./pages/CardPage";
+import Pokedeck from "./pages/pokedeck/Pokedeck";
+import CardPage from "./pages/cardPage/CardPage";
 
 const router = createBrowserRouter([
   {
@@ -23,24 +24,25 @@ const router = createBrowserRouter([
           const cards = fetch(
             "https://api.pokemontcg.io/v2/cards?pageSize=50"
           ).then((res) => res.json());
+
           return defer({ cards });
         },
-        children: [
-          {
-            path: "/search/:id",
-            element: <CardPage />,
-            loader: () => {
-              const cards = fetch(
-                "https://api.pokemontcg.io/v2/cards?pageSize=50"
-              ).then((res) => res.json());
-              return defer({ cards });
-            },
-          },
-        ],
+      },
+      {
+        path: "/search/:id",
+        element: <CardPage />,
+        loader: ({ params }) => {
+          const card = fetch(`https://api.pokemontcg.io/v2/cards/${params.id}`);
+          return card;
+        },
       },
       {
         path: "/shop",
         element: <Shop />,
+      },
+      {
+        path: "/pokedeck",
+        element: <Pokedeck />,
       },
       {
         path: "*",

@@ -1,8 +1,15 @@
-.HomeImage {
+.home {
   display: flex;
+  gap: 0.5rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-image: url(../../assets/backpurple.jpg);
+  background-size: cover;
+}
+
+.button {
+  width: 6rem;
 }
 
 .smallImage {
@@ -11,14 +18,21 @@
   width: auto;
   max-width: 100%;
   height: auto;
+  animation: float 2.5s ease-out infinite;
 }
 
 .CatchThem {
-  margin-bottom: 2rem;
-  margin-top: 0;
   width: auto;
-  max-width: 100%;
+  max-width: 90%;
   height: auto;
+}
+
+.navContent {
+  padding: 1rem;
+  text-align: center;
+  margin-top: 0.5rem;
+  width: 100%;
+  border-radius: 1rem;
 }
 
 .text {
@@ -33,5 +47,35 @@
 
 .welcome {
   color: white;
-  font-size: 24px;
+  font-size: 1.5rem;
+}
+
+@keyframes float {
+  0% {
+    transform: translatey(10px);
+  }
+  50% {
+    transform: translatey(-30px);
+  }
+  100% {
+    transform: translatey(10px);
+  }
+}
+
+@media (max-width: 768px) {
+  .text {
+    font-size: 1rem;
+  }
+  .welcome {
+    font-size: 1rem;
+  }
+
+  .smallImage {
+    width: 20rem;
+    animation: none;
+  }
+
+  .fantome {
+    width: 7rem;
+  }
 }

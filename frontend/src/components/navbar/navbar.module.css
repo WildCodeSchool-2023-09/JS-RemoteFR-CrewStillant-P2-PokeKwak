@@ -1,6 +1,5 @@
 .navbar {
-  width: 100%;
-  height: auto;
+  padding: 1rem;
   background-color: #9986fa;
   border-radius: 10px;
   margin-top: 10px;
@@ -8,6 +7,12 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  position: sticky;
+  bottom: 0;
+}
+
+.navbar li:hover {
+  background-color: rgb(18, 50, 167);
 }
 
 .navbar a {
@@ -16,19 +21,26 @@
   font-size: 12px;
 }
 
-.navbar ul {
-  list-style: none;
+.link li {
+  padding: 5px;
+  border-radius: 10px;
 }
 
 .link {
-  margin-right: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  margin: 0;
+  padding: 1rem;
+  padding-right: 0;
+  list-style: none;
 }
 
-.logo img {
-  width: 60px;
-  height: 55px;
+.logo {
+  width: 5rem;
   border-radius: 10px;
   margin-top: 2px;
+  animation: rotating 5s linear infinite;
 }
 
 .title {
@@ -46,11 +58,10 @@
 
 @media (min-width: 768px) {
   .navbar {
-    width: 100%;
     height: 100px;
   }
 
-  .logo img {
+  .logo {
     width: 100px;
     height: 90px;
   }
@@ -60,11 +71,16 @@
     -webkit-text-stroke: 2px rgb(18, 50, 167);
   }
 
-  .link {
-    margin-right: 20px;
-  }
-
   .navbar a {
     font-size: 18px;
+  }
+}
+
+@keyframes rotating {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
   }
 }

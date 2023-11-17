@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { NavLink } from "react-router-dom";
 import ConfirmModal from "../confirmModal/ConfirmModal";
@@ -7,7 +7,7 @@ import shop from "../../assets/basket.png";
 import styles from "./modal.module.css";
 import { useBasket } from "../../context/BasketContext";
 
-function Modal({ toggleModal, largeImage, name, price, id }) {
+function Modal({ data, toggleModal, largeImage, name, price, id }) {
   const {
     basketCount,
     setBasketCount,
@@ -15,6 +15,8 @@ function Modal({ toggleModal, largeImage, name, price, id }) {
     setPrices,
     cardItems,
     setCardItems,
+    favoriteCard,
+    setFavoriteCard,
   } = useBasket();
 
   const [isHovering, setIsHovering] = useState(false);
@@ -27,8 +29,25 @@ function Modal({ toggleModal, largeImage, name, price, id }) {
 
   const [added, setAdded] = useState(false);
   const [typeButton, setTypeButton] = useState("");
+  const favoriteClick = () => {
+    const fav = favoriteCard.find((f) => f.idCard === id);
 
-  const favortiteClick = () => {
+    if (fav) {
+      const temp = data;
+      temp.isFavorite = true;
+      setFavoriteCard([...favoriteCard]);
+    } else {
+      const newCard = {
+        idCard: id,
+        cardName: name,
+        image: largeImage,
+      };
+      setFavoriteCard([...favoriteCard, newCard]);
+      localStorage.setItem(
+        "favoriteCard",
+        JSON.stringify([...favoriteCard, newCard])
+      );
+    }
     setTypeButton(true);
     setAdded(!added);
     setTimeout(() => {
@@ -37,10 +56,11 @@ function Modal({ toggleModal, largeImage, name, price, id }) {
   };
 
   const shopClick = () => {
-    const itemIndex = cardItems.findIndex((item) => item.name === name);
+    const item = cardItems.find((c) => c.idItem === id);
 
-    if (itemIndex !== -1) {
-      cardItems[itemIndex].quantity += 1;
+    if (item) {
+      item.quantity += 1;
+      setCardItems([...cardItems]);
     } else {
       const newItem = {
         idItem: id,
@@ -49,17 +69,20 @@ function Modal({ toggleModal, largeImage, name, price, id }) {
         image: largeImage,
         quantity: 1,
       };
-      cardItems.push(newItem);
+      setCardItems([...cardItems, newItem]);
     }
+    setPrices(prices + price);
     setBasketCount(basketCount + 1);
     setTypeButton(false);
     setAdded(!added);
-    setPrices(prices + price);
-    setCardItems([...cardItems]);
     setTimeout(() => {
       setAdded(false);
-    }, 1500);
+    }, 1000);
   };
+
+  useEffect(() => {
+    localStorage.setItem("favoriteCard", JSON.stringify(favoriteCard));
+  }, [favoriteCard]);
 
   return (
     <div className={styles.modal}>
@@ -87,7 +110,7 @@ function Modal({ toggleModal, largeImage, name, price, id }) {
                 onFocus={handleMouseOver}
                 onMouseOut={handleMouseOut}
                 onBlur={handleMouseOut}
-                onClick={favortiteClick}
+                onClick={favoriteClick}
                 className={styles.buttonFavorite}
               >
                 <img src={pokeball} alt="pokeball" />
@@ -106,7 +129,9 @@ function Modal({ toggleModal, largeImage, name, price, id }) {
             </div>
           </span>
         </div>
-        {added && <ConfirmModal typeButton={typeButton} />}
+        {added && (
+          <ConfirmModal typeButton={typeButton} isFavorite={data.isFavorite} />
+        )}
       </div>
     </div>
   );
@@ -115,6 +140,11 @@ function Modal({ toggleModal, largeImage, name, price, id }) {
 export default Modal;
 
 Modal.propTypes = {
+  data: PropTypes.oneOfType([
+    PropTypes.shape,
+    () => null,
+    PropTypes.instanceOf(Error),
+  ]).isRequired,
   toggleModal: PropTypes.func.isRequired,
   largeImage: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,

@@ -1,21 +1,24 @@
 .shopList {
-  border: 2px solid black;
+  border: solid #9986fa 3px;
   margin: 2rem;
+  border-radius: 0.5rem;
   color: aliceblue;
   padding: 0.5rem;
+  height: auto;
+  background-color: rgba(65, 59, 80, 0.8);
 }
 
 .quantity {
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .prices {
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .titleShop {
   color: aliceblue;
-  font-size: 16px;
+  font-size: 18px;
   text-align: center;
   margin-top: 3rem;
 }
@@ -30,17 +33,24 @@
 }
 
 .cartItems_img p {
-  font-size: 14px;
+  font-size: 13px;
+  margin-left: 1rem;
 }
 
 .priceItems {
-  font-size: 12px;
+  font-size: 13px;
   margin-left: 1rem;
 }
 
 .cartItems {
   display: flex;
   flex-direction: row;
+  margin-bottom: 1rem;
+}
+
+.buttonBasket {
+  padding: 3px;
+  margin: 3px;
 }
 
 .cartItems_info {
@@ -53,24 +63,60 @@
   text-align: end;
 }
 
+.buttonsItems {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.basketAdd {
+  font-size: 12px;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.basketCount {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 10rem;
+  margin-bottom: 2rem;
+}
+
+.basketCount img {
+  width: 10%;
+}
+
+a {
+  color: white;
+  font-size: 1.5rem;
+  margin-left: 1rem;
+}
+
 @media (min-width: 760px) {
   .shopList {
-    border: 2px solid black;
     margin: 3rem;
     color: aliceblue;
     padding: 1rem;
   }
 
   .cartItems_img img {
-    width: 20%;
+    width: 15%;
   }
 
-  .cartItems_img p {
-    font-size: 24px;
+  .cartItems_img a {
+    color: white;
+    font-size: 2rem;
+  }
+
+  .buttonBasket {
+    padding: 0.5rem;
   }
 
   .quantity {
-    font-size: 24px;
+    font-size: 28px;
   }
 
   .cartItems_img {
@@ -79,7 +125,7 @@
   }
 
   .priceItems {
-    font-size: 24px;
+    font-size: 28px;
     margin-left: 2rem;
   }
 
@@ -91,7 +137,7 @@
 
   .titleShop {
     color: aliceblue;
-    font-size: 26px;
+    font-size: 28px;
     text-align: center;
     margin-top: 3rem;
   }
@@ -105,14 +151,19 @@
   .buttonsItems {
     display: flex;
     align-items: center;
+    margin-right: 10px;
   }
 
   .quantity {
-    font-size: 24px;
+    font-size: 28px;
     margin: 10px;
   }
 
   .prices {
-    font-size: 24px;
+    font-size: 28px;
+  }
+
+  .basketAdd {
+    font-size: 15px;
   }
 }
