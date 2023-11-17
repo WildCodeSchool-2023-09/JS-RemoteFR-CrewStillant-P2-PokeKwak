@@ -5,7 +5,6 @@
 }
 
 .cardList {
-  background-color: #33303b;
   display: flex;
   flex-direction: row;
   justify-content: center;
