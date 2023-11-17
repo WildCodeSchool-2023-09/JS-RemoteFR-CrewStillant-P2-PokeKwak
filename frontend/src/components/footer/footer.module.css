@@ -22,3 +22,34 @@
   margin: 1rem;
   align-items: center;
 }
+
+.fantome {
+  position: absolute;
+  animation: move 8s linear infinite;
+}
+
+@keyframes move {
+  0% {
+    transform: translateX(1200px);
+  }
+
+  100% {
+    transform: translateX(-1200px);
+  }
+}
+
+@media (max-width: 768px) {
+  .fantome {
+    position: absolute;
+    animation: move 7s linear infinite;
+  }
+  @keyframes move {
+    0% {
+      transform: translateX(780px);
+    }
+
+    100% {
+      transform: translateX(-780px);
+    }
+  }
+}
