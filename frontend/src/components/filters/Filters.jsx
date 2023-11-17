@@ -1,7 +1,8 @@
-import { useState } from "react";
 import PropTypes from "prop-types";
+import Menu from "react-burger-menu/lib/menus/slide";
 import styles from "./filters.module.css";
 import SearchBar from "./searchBar/SearchBar";
+import "./style.css";
 
 function Filters({
   setFilteredCards,
@@ -11,12 +12,6 @@ function Filters({
   collectionArray,
   data,
 }) {
-  const [reduce, setReduce] = useState("Reduce");
-  const [buttonName, setButtonName] = useState("<");
-  const reduceClick = () => {
-    setReduce((e) => !e);
-    setButtonName(">");
-  };
   const typeChange = (e) => {
     setFilteredCards(
       data.filter(
@@ -45,9 +40,9 @@ function Filters({
   };
   const pricesValue = pricesChange.prices;
   return (
-    <div className={styles.filters}>
-      <SearchBar setFilteredCards={setFilteredCards} data={data} />
-      <div className={reduce ? styles.notReduce : styles.reduce}>
+    <Menu>
+      <div className={styles.filters}>
+        <SearchBar setFilteredCards={setFilteredCards} data={data} />
         <div className="collection">
           <h1>Collection :</h1>
           <div className={styles.collection}>
@@ -118,14 +113,8 @@ function Filters({
             Reset
           </button>
         </div>
-
-        <div className={styles.buttonFilter}>
-          <button type="button" onClick={reduceClick}>
-            {buttonName}
-          </button>
-        </div>
       </div>
-    </div>
+    </Menu>
   );
 }
 
